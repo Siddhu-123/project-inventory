@@ -1,0 +1,1061 @@
+\documentclass[10pt,a4paper]{article}
+
+% Geometry
+\usepackage[a4paper, margin=1.4cm, top=2.2cm, bottom=2.0cm, headheight=16pt, footskip=14pt]{geometry}
+
+% Typography & Language
+\usepackage{fontspec}
+\setmainfont{Helvetica Neue}[
+  BoldFont={Helvetica Neue Bold},
+  ItalicFont={Helvetica Neue Italic}
+]
+\setmonofont{Menlo}[Scale=0.85]
+
+% Math
+\usepackage{amsmath,amssymb}
+
+% Colors
+\usepackage[dvipsnames]{xcolor}
+\definecolor{primary}{HTML}{0F172A}       % Dark Slate
+\definecolor{secondary}{HTML}{1E293B}     % Slate 800
+\definecolor{accent}{HTML}{2563EB}        % Royal Blue
+\definecolor{accentdark}{HTML}{1D4ED8}    % Deep Blue
+\definecolor{textdark}{HTML}{1E293B}      % Body text
+\definecolor{textmuted}{HTML}{64748B}
+\definecolor{slate}{HTML}{64748B}     % Muted slate
+\definecolor{cardborder}{HTML}{CBD5E1}    % Card border
+\definecolor{lightbg}{HTML}{F8FAFC}       % Light background
+\definecolor{completed}{HTML}{15803D}     % Forest Green
+\definecolor{completedbg}{HTML}{DCFCE7}   % Light Green
+\definecolor{progress}{HTML}{0369A1}      % Sky Blue
+\definecolor{progressbg}{HTML}{E0F2FE}    % Light Sky
+\definecolor{prototype}{HTML}{B45309}     % Amber
+\definecolor{prototypebg}{HTML}{FEF3C7}   % Light Amber
+\definecolor{concept}{HTML}{7E22CE}       % Purple
+\definecolor{conceptbg}{HTML}{F3E8FF}     % Light Purple
+\definecolor{danger}{HTML}{BE123C}        % Rose
+\definecolor{dangerbg}{HTML}{FFE4E6}      % Light Rose
+
+% Links & Bookmarks
+\usepackage[bookmarks=true,bookmarksnumbered=true,colorlinks=true,linkcolor=accent,urlcolor=accent,citecolor=accent]{hyperref}
+
+% Header & Footer
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\footnotesize\textbf{\color{primary}Satya Siddhartha Balanagu} \quad\textbar\quad {\color{textmuted}Master Project \& Skills Inventory}}
+\rhead{\footnotesize\color{accent}\textbf{TECHNICAL DOSSIER}}
+\lfoot{\footnotesize\color{textmuted}\faIcon{lock}\ Confidential \& Verified Career Engineering Portfolio}
+\rfoot{\footnotesize\color{textmuted}Page \textbf{\thepage} of \pageref{LastPage}}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+
+% Section Titles
+\usepackage{titlesec}
+\titleformat{\section}
+  {\Large\bfseries\color{primary}}
+  {\textcolor{accent}{\thesection.}}{0.5em}{}
+  [\titlerule]
+\titlespacing*{\section}{0pt}{14pt}{8pt}
+
+\titleformat{\subsection}
+  {\large\bfseries\color{secondary}}
+  {\textcolor{accent}{\thesubsection}}{0.5em}{}
+\titlespacing*{\subsection}{0pt}{10pt}{4pt}
+
+% Lists & Tables
+\usepackage{enumitem}
+\usepackage{tabularx}
+\usepackage{booktabs}
+\usepackage{colortbl}
+\usepackage{fontawesome5}
+
+% Boxes & Cards
+\usepackage{tcolorbox}
+\tcbuselibrary{skins,breakable}
+
+% Status Badge Macros
+\newcommand{\statuscompleted}{\tcbox[on line, colback=completedbg, colframe=completed!50!white, size=small, arc=2pt, boxrule=0.5pt]{\scriptsize\bfseries\color{completed}\faIcon{check-circle}\ COMPLETED / SUBSTANTIAL}}
+\newcommand{\statusprogress}{\tcbox[on line, colback=progressbg, colframe=progress!50!white, size=small, arc=2pt, boxrule=0.5pt]{\scriptsize\bfseries\color{progress}\faIcon{spinner}\ IN PROGRESS}}
+\newcommand{\statusprototype}{\tcbox[on line, colback=prototypebg, colframe=prototype!50!white, size=small, arc=2pt, boxrule=0.5pt]{\scriptsize\bfseries\color{prototype}\faIcon{flask}\ PROTOTYPE / PARTIAL}}
+\newcommand{\statusconcept}{\tcbox[on line, colback=conceptbg, colframe=concept!50!white, size=small, arc=2pt, boxrule=0.5pt]{\scriptsize\bfseries\color{concept}\faIcon{lightbulb}\ CONCEPT / RESEARCH ONLY}}
+
+% Skill Tag Macro
+\newcommand{\skilltag}[1]{\tcbox[on line, colback=lightbg, colframe=cardborder, size=small, arc=2pt, boxrule=0.4pt]{\scriptsize\color{textdark}#1}}
+\newcommand{\skilltagacc}[1]{\tcbox[on line, colback=accent!8!white, colframe=accent!40!white, size=small, arc=2pt, boxrule=0.5pt]{\scriptsize\bfseries\color{accentdark}#1}}
+
+% Callout Environments
+\newtcolorbox{metricsbox}[1][]{
+  enhanced, colback=completedbg!35!white, colframe=completed!50!white,
+  boxrule=0.5pt, arc=3pt, left=6pt, right=6pt, top=4pt, bottom=4pt,
+  before skip=3pt, after skip=3pt, fontupper=\footnotesize\color{completed!90!black}, #1
+}
+
+\newtcolorbox{resumebox}[1][]{
+  enhanced, colback=lightbg, colframe=accent, boxrule=0pt, leftrule=3pt,
+  arc=2pt, left=6pt, right=6pt, top=4pt, bottom=4pt,
+  before skip=3pt, after skip=4pt, fontupper=\footnotesize\color{primary}, #1
+}
+
+\newtcolorbox{guardrailbox}[1][]{
+  enhanced, colback=dangerbg!40!white, colframe=danger, boxrule=0pt, leftrule=3.5pt,
+  arc=3pt, left=8pt, right=8pt, top=6pt, bottom=6pt,
+  before skip=6pt, after skip=6pt, #1
+}
+
+\newtcolorbox{projectcard}[1][]{
+  enhanced, colback=white, colframe=cardborder, boxrule=0.6pt, arc=4pt,
+  left=9pt, right=9pt, top=7pt, bottom=7pt, before skip=5pt, after skip=8pt,
+  breakable, #1
+}
+
+\newtcolorbox{miniprojectcard}[1][]{
+  enhanced, colback=white, colframe=cardborder, boxrule=0.5pt, arc=3pt,
+  left=7pt, right=7pt, top=5pt, bottom=5pt, before skip=4pt, after skip=6pt,
+  breakable, #1
+}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{4pt}
+
+\begin{document}
+
+% ==========================================
+% COVER / HERO BANNER
+% ==========================================
+\begin{tcolorbox}[
+  enhanced,
+  colback=primary,
+  colframe=primary,
+  arc=5pt,
+  boxrule=0pt,
+  left=14pt, right=14pt, top=14pt, bottom=14pt,
+  after skip=10pt
+]
+  {\scriptsize\bfseries\color{accent!30!white}\faIcon{shield-alt}\ TECHNICAL DOSSIER \& PORTFOLIO AUDIT}\\[4pt]
+  {\fontsize{20pt}{23pt}\selectfont\bfseries\color{white} Master Project and Skills Inventory}\\[4pt]
+  {\small\color{slate!20!white} Comprehensive, evidence-backed engineering dossier spanning On-Device Vision-Language AI, Robotics, Audio Engines, Web3, Cryptography, Machine Learning, Full-Stack Software, UI/UX Design, and Systems Governance.}\\[6pt]
+  \par\vspace{4pt}
+  {\color{white!30!gray}\hrule height 0.5pt}
+  \par\vspace{6pt}
+  \noindent
+  \begin{tabularx}{\textwidth}{@{}XXXX@{}}
+    {\footnotesize\color{accent!40!white}\textbf{Candidate:} \color{white}Satya S. Balanagu} &
+    {\footnotesize\color{accent!40!white}\textbf{Portfolio Scope:} \color{white}15 Domains} &
+    {\footnotesize\color{accent!40!white}\textbf{Evidence Audit:} \color{white}100\% Verified} &
+    {\footnotesize\color{accent!40!white}\textbf{Date of Record:} \color{white}September 2026}
+  \end{tabularx}
+\end{tcolorbox}
+
+% STATS BAR
+\noindent
+\begin{minipage}[t]{0.235\textwidth}
+\begin{tcolorbox}[enhanced, colback=lightbg, colframe=cardborder, arc=3pt, boxrule=0.5pt, halign=center, top=5pt, bottom=5pt, left=2pt, right=2pt]
+  {\Large\bfseries\color{accent} 15}\\[1pt]
+  {\tiny\bfseries\color{textmuted}\MakeUppercase{Flagship Projects}}
+\end{tcolorbox}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.235\textwidth}
+\begin{tcolorbox}[enhanced, colback=lightbg, colframe=cardborder, arc=3pt, boxrule=0.5pt, halign=center, top=5pt, bottom=5pt, left=2pt, right=2pt]
+  {\Large\bfseries\color{accent} 38+}\\[1pt]
+  {\tiny\bfseries\color{textmuted}\MakeUppercase{Validated Deliverables}}
+\end{tcolorbox}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.235\textwidth}
+\begin{tcolorbox}[enhanced, colback=lightbg, colframe=cardborder, arc=3pt, boxrule=0.5pt, halign=center, top=5pt, bottom=5pt, left=2pt, right=2pt]
+  {\Large\bfseries\color{accent} 14}\\[1pt]
+  {\tiny\bfseries\color{textmuted}\MakeUppercase{Technical Skill Areas}}
+\end{tcolorbox}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.235\textwidth}
+\begin{tcolorbox}[enhanced, colback=lightbg, colframe=cardborder, arc=3pt, boxrule=0.5pt, halign=center, top=5pt, bottom=5pt, left=2pt, right=2pt]
+  {\Large\bfseries\color{accent} 5}\\[1pt]
+  {\tiny\bfseries\color{textmuted}\MakeUppercase{Resume Profiles}}
+\end{tcolorbox}
+\end{minipage}
+
+\vspace{6pt}
+
+% STATUS TAXONOMY GUIDE
+\begin{tcolorbox}[enhanced, colback=lightbg, colframe=cardborder, boxrule=0.5pt, arc=3pt, left=8pt, right=8pt, top=6pt, bottom=6pt, after skip=8pt]
+  {\footnotesize\bfseries\color{primary}\faIcon{list-ul}\ EVIDENTIARY STATUS CLASSIFICATION GUIDE}\\[4pt]
+  \begin{tabularx}{\textwidth}{@{}lXlX@{}}
+    \statuscompleted & {\scriptsize Report, code, notebook, formal presentation, or verified benchmark exists.} &
+    \statusprogress & {\scriptsize Rigorous research, scoping, or architectural design actively underway.} \\
+    \statusprototype & {\scriptsize Working design, software module, or partial pipeline exists; end-to-end testing incomplete.} &
+    \statusconcept & {\scriptsize Concept, pitch deck, or literature review exists without completed implementation.}
+  \end{tabularx}
+\end{tcolorbox}
+
+% TABLE OF CONTENTS SUMMARY
+\begin{tcolorbox}[enhanced, colback=white, colframe=cardborder, boxrule=0.5pt, arc=3pt, left=8pt, right=8pt, top=6pt, bottom=6pt]
+  {\footnotesize\bfseries\color{primary}\faIcon{compass}\ COMPREHENSIVE SECTION INDEX}\\[3pt]
+  \begin{tabularx}{\textwidth}{@{}XXX@{}}
+    {\scriptsize\textbf{1.} Strongest Resume Projects (15 Flagships)} &
+    {\scriptsize\textbf{6.} Robotics, Embedded Systems \& IoT} &
+    {\scriptsize\textbf{11.} Design-Thinking \& Survey Research} \\
+    {\scriptsize\textbf{2.} Complete AI/ML Coursework Inventory} &
+    {\scriptsize\textbf{7.} UI/UX, Web \& Application Projects} &
+    {\scriptsize\textbf{12.} Unfinished \& Conceptual Work Audit} \\
+    {\scriptsize\textbf{3.} Data Science \& Statistics Projects} &
+    {\scriptsize\textbf{8.} Project Management Work} &
+    {\scriptsize\textbf{13.} Technical Skills Matrix (14 Domains)} \\
+    {\scriptsize\textbf{4.} Computer Science \& Algorithms Portfolio} &
+    {\scriptsize\textbf{9.} Ethics, Responsible AI \& Policy} &
+    {\scriptsize\textbf{14.} Experience, Internships \& Leadership} \\
+    {\scriptsize\textbf{5.} Cybersecurity Labs \& SOC Exercises} &
+    {\scriptsize\textbf{10.} Android \& Quantum Computing Work} &
+    {\scriptsize\textbf{15.} Resume Positioning \& Guardrails}
+  \end{tabularx}
+\end{tcolorbox}
+
+\newpage
+
+% ==========================================
+% SECTION 1: STRONGEST RESUME PROJECTS
+% ==========================================
+\section{Strongest Resume Projects (15 Flagship Initiatives)}
+
+% 1.1 Lettuce Biomass
+\begin{projectcard}
+  \textbf{\large 1.1 RGB-D Plant Segmentation and Lettuce Biomass Estimation} \hfill \statuscompleted\\[2pt]
+  {\footnotesize\color{textmuted}\textbf{Evidence:} \underline{RGB-D Based Plant Segmentation Using DeepLabV3+ Report.pdf}}
+  \begin{itemize}[leftmargin=14pt, itemsep=1.5pt, topsep=2pt]
+    \item Built an end-to-end non-destructive plant-phenotyping pipeline to estimate lettuce dry-shoot biomass from raw RGB-D sensor data.
+    \item Restored noisy depth maps via Region-of-Interest (ROI) cropping, OpenCV inpainting, bilateral filtering, and depth-range thresholding.
+    \item Implemented DeepLabV3+ with a ResNet34 backbone and Atrous Spatial Pyramid Pooling (ASPP) for high-precision canopy segmentation.
+    \item Optimized network using Tversky loss (penalizing false negatives), spatial data augmentations, early stopping, and IoU/F1 evaluation.
+    \item Extracted 39 RGB, depth, geometric, 3D voxel volume, convex hull, vegetation indices (ExG, NDVI equivalents), and shape features.
+    \item Trained and benchmarked regression models: LightGBM, Gradient Boosting, Huber regression, staged prediction, and ensemble voting.
+    \item Engineered cross-platform workflows supporting RGB, depth, masks, CSV metadata, Apple Silicon MPS acceleration, and CPU fallback.
+  \end{itemize}
+  \begin{metricsbox}
+    \textbf{\faIcon{chart-bar}\ Empirical Results:} Validation \textbf{IoU: $\approx$ 0.982} \quad\textbar\quad \textbf{F1 Score: $\approx$ 0.991}. \emph{(Note: Separate competition runs record distinct MAE values; maintain separate splits on resumes)}.
+  \end{metricsbox}
+  \begin{resumebox}
+    \textbf{\color{accent}\faIcon{briefcase}\ Ready-to-Use Resume Bullet:}\\
+    Built an RGB-D lettuce biomass-estimation pipeline using depth restoration, DeepLabV3+ segmentation, 3D plant geometry, vegetation indices, and ensemble regression.
+  \end{resumebox}
+\end{projectcard}
+
+% 1.2 Accent Speech
+\begin{projectcard}
+  \textbf{\large 1.2 Accent-Adaptive Speech System} \hfill \statuscompleted\\[2pt]
+  {\footnotesize\color{textmuted}\textbf{Evidence:} \underline{Accent-Adaptive Speech System Report (accent\_speech\_report.pdf)}}
+  \begin{itemize}[leftmargin=14pt, itemsep=1.5pt, topsep=2pt]
+    \item Processed Mozilla Common Voice English audio spanning 13 distinct global accent groups.
+    \item Engineered audio cleaning pipeline: SNR and duration filtering, recording segmentation, 16 kHz mono resampling, and amplitude normalization.
+    \item Applied acoustic augmentations: Gaussian noise injection, pitch shifting, and silence padding.
+    \item Analyzed prosody and phonetic features: MFCCs, fundamental frequency ($F_0$/pitch), RMS energy, spectral centroids, PCA, and t-SNE clustering.
+    \item Fine-tuned Facebook's wav2vec2-base via self-supervised masked frame prediction and contrastive InfoNCE loss.
+    \item Trained a 768-to-512-dimensional bottleneck accent adapter network using Mean Squared Error (MSE) loss.
+    \item Integrated SpeechT5 and SpeechT5 HiFi-GAN neural vocoder for accent-conditioned speech synthesis.
+    \item Engineered robust Kaggle NVIDIA P100 scripts with checkpoint rotation, resume capabilities, deterministic seeds, and device detection.
+    \item Synthesized speech across all 13 accent profiles and conducted a qualitative listening evaluation.
+  \end{itemize}
+  \begin{metricsbox}
+    \textbf{\faIcon{chart-bar}\ Empirical Results:} Accent cluster separation achieved a \textbf{Silhouette Score: $\approx$ 0.22} and \textbf{Normalized Mutual Information (NMI): $\approx$ 0.34}.
+  \end{metricsbox}
+  \begin{resumebox}
+    \textbf{\color{accent}\faIcon{briefcase}\ Ready-to-Use Resume Bullet:}\\
+    Developed an accent-adaptive speech pipeline using wav2vec2 embeddings, prosody features, adapter training, SpeechT5 synthesis, and accent-conditioned evaluation.
+  \end{resumebox}
+\end{projectcard}
+
+\newpage
+
+% 1.3 RLHF
+\begin{projectcard}
+  \textbf{\large 1.3 RLHF Alignment Comparison: PPO versus DPO} \hfill \statuscompleted\\[2pt]
+  {\footnotesize\color{textmuted}\textbf{Evidence:} \underline{RLHF Final Report (Final\_report.pdf)}}
+  \begin{itemize}[leftmargin=14pt, itemsep=1.5pt, topsep=2pt]
+    \item Architected a full 3-stage Reinforcement Learning from Human Feedback (RLHF) pipeline: SFT, Reward Modeling (RM), and Policy Optimization.
+    \item Head-to-head empirical comparison of Proximal Policy Optimization (PPO) versus Direct Preference Optimization (DPO) on GPT-2 and GPT-2-Medium.
+    \item Utilized Stanford SST-2 sentiment and UltraFeedback pairwise preference datasets.
+    \item Engineered reward models featuring linear scalar heads and partially frozen transformer layers, trained via BCE with warmup and cosine learning-rate schedules.
+    \item Implemented PPO with Generalized Advantage Estimation (GAE), clipped surrogate policy objectives, dynamic KL penalties, and value heads.
+    \item Implemented DPO directly optimizing policy parameters from preference pairs without a separate reward model.
+    \item Conducted local training on Apple Silicon Metal Performance Shaders (MPS).
+    \item Evaluated reward model accuracy, pairwise preference accuracy, language model perplexity degradation, reward hacking phenomena, and blind peer preference.
+  \end{itemize}
+  \begin{metricsbox}
+    \textbf{\faIcon{chart-bar}\ Empirical Results:} \textbf{89.5\%} SST-2 reward model accuracy \quad\textbar\quad \textbf{76.6\%} UltraFeedback pairwise accuracy. Quantified PPO reward hacking via perplexity spikes; DPO preferred over SFT in blind evaluation.
+  \end{metricsbox}
+  \begin{resumebox}
+    \textbf{\color{accent}\faIcon{briefcase}\ Ready-to-Use Resume Bullet:}\\
+    Implemented and compared PPO-based RLHF and DPO for GPT-2 models using SST-2 and UltraFeedback preference data, analysing reward modelling, KL control, perplexity, reward hacking, and human preference.
+  \end{resumebox}
+\end{projectcard}
+
+% 1.4 Image Deblurring
+\begin{projectcard}
+  \textbf{\large 1.4 Image Deblurring and Downstream Object Detection Under Degradation} \hfill \statuscompleted\\[2pt]
+  {\footnotesize\color{textmuted}\textbf{Evidence:} \underline{Computer Vision Assignment 1 Report (report.pdf)}}
+  \begin{itemize}[leftmargin=14pt, itemsep=1.5pt, topsep=2pt]
+    \item Designed a reproducible restoration-to-detection benchmark comparing classical Richardson–Lucy deconvolution against learned NAFNet.
+    \item Trained and validated on GoPro sharp/blurred image pairs and synthetic motion blur models generated from COCO-2017.
+    \item Fine-tuned YOLOv8n specifically for degraded and restored imagery to quantify the downstream benefits of restoration.
+    \item Benchmarked PSNR, SSIM, detection confidence distributions, bounding-box counts, blur severity gradients, mAP@0.5, and failure modes.
+    \item Utilized Apple Silicon MPS/CPU evaluation alongside cloud Kaggle Tesla T4 GPU training with fixed seeds and strict splits.
+  \end{itemize}
+  \begin{metricsbox}
+    \textbf{\faIcon{chart-bar}\ Empirical Results:} NAFNet improved PSNR by \textbf{+3.86 dB}. YOLOv8n fine-tuning increased blurred mAP from \textbf{0.256 to 0.383}; post-deblurring mAP surged from \textbf{0.373 to 0.520}. Documented CPU latency tradeoffs.
+  \end{metricsbox}
+  \begin{resumebox}
+    \textbf{\color{accent}\faIcon{briefcase}\ Ready-to-Use Resume Bullet:}\\
+    Built a reproducible deblurring-to-detection pipeline comparing Richardson–Lucy and NAFNet restoration with YOLOv8n under synthetic and real motion blur.
+  \end{resumebox}
+\end{projectcard}
+
+\newpage
+
+% 1.5 NFT Marketplace
+\begin{projectcard}
+  \textbf{\large 1.5 Blockchain NFT Marketplace and AI-Powered Multimodal Search} \hfill \statuscompleted\\[2pt]
+  {\footnotesize\color{textmuted}\textbf{Evidence:} \underline{Final Report} \quad\textbar\quad \underline{Conference Paper} \quad\textbar\quad \underline{AI Search Spec}}
+  \begin{itemize}[leftmargin=14pt, itemsep=1.5pt, topsep=2pt]
+    \item Engineered a full-stack decentralized NFT marketplace web application connecting smart contracts with a modern React frontend.
+    \item Built backend and smart contracts using Solidity, Hardhat, Ethereum Sepolia testnet, MetaMask wallet integration, Node.js, and IPFS/database storage.
+    \item Implemented core Web3 workflows: ERC-721 token minting, ownership verification, marketplace listings, escrow transactions, and balance management.
+    \item Developed an AI-driven search engine featuring Natural Language Processing (NLP) with part-of-speech (POS) tokenized search.
+    \item Researched and specified computer vision image retrieval using visual feature embeddings to detect duplicates and enable reverse-image NFT search.
+    \item Designed dark-themed UI/UX featuring product zoom, CSS micro-animations, gamification elements, and educational Web3 onboarding.
+    \item Authored a comprehensive conference paper and a formal patent-style draft specification for multimodal digital asset retrieval.
+  \end{itemize}
+  \begin{metricsbox}[colback=prototypebg!35!white, colframe=prototype!50!white, fontupper=\footnotesize\color{prototype!90!black}]
+    \textbf{\faIcon{exclamation-triangle}\ Integrity Note:} Reference intellectual property contributions as a \textbf{"patent specification / application draft"} (do not claim granted status).
+  \end{metricsbox}
+  \begin{resumebox}
+    \textbf{\color{accent}\faIcon{briefcase}\ Ready-to-Use Resume Bullet:}\\
+    Built and researched a blockchain NFT marketplace using React, Node.js, Solidity, Hardhat, Sepolia, MetaMask, NLP search, and image-based visual retrieval.
+  \end{resumebox}
+\end{projectcard}
+
+% 1.6 Roolie Robot
+\begin{projectcard}
+  \textbf{\large 1.6 Roolie: Two-Wheeled Self-Balancing Interactive Social Robot} \hfill \statuscompleted\\[2pt]
+  {\footnotesize\color{textmuted}\textbf{Evidence:} \underline{Project PPT} \quad\textbar\quad \underline{Robot Paper} \quad\textbar\quad \underline{Conference Paper}}
+  \begin{itemize}[leftmargin=14pt, itemsep=1.5pt, topsep=2pt]
+    \item Designed and fabricated a two-wheeled self-balancing social robot combining inverted pendulum control with computer vision and voice interaction.
+    \item Hardware architecture: Raspberry Pi Zero W (companion computing), ESP32-CAM (video streaming), MPU6050 6-DOF IMU, high-torque DC gear motors, L298N driver, Li-ion battery regulation, servo neck, IR sensors, microphone, speaker, and LCD display.
+    \item Developed closed-loop Proportional-Integral-Derivative (PID) control firmware in Arduino C++ to maintain vertical stabilization under dynamic perturbations.
+    \item Implemented Raspberry Pi Python service executing OpenCV face and object tracking, real-time video streaming, and voice command processing.
+    \item Integrated Google Speech-to-Text, Google Search API, gTTS, and eSpeak to deliver conversational answers, weather forecasts, and home automation triggers.
+    \item Built mobile and web dashboard prototypes to stream live camera telemetry and control manual robot navigation.
+    \item Co-authored and published technical paper at the ICSTCEE conference.
+  \end{itemize}
+  \begin{resumebox}
+    \textbf{\color{accent}\faIcon{briefcase}\ Ready-to-Use Resume Bullet:}\\
+    Designed an interactive self-balancing robot combining PID control, Raspberry Pi, ESP32-CAM, MPU6050 sensing, voice interaction, camera streaming, and mobile/web control concepts.
+  \end{resumebox}
+\end{projectcard}
+
+\newpage
+
+% 1.7 SA Water Capstone
+\begin{projectcard}
+  \textbf{\large 1.7 SA Water Wastewater Sensor-Placement Optimization Capstone} \hfill \statusprogress\\[2pt]
+  {\footnotesize\color{textmuted}\textbf{Evidence:} \underline{Literature Report} \quad\textbar\quad \underline{Deep Research} \quad\textbar\quad \underline{Research Library}}
+  \begin{itemize}[leftmargin=14pt, itemsep=1.5pt, topsep=2pt]
+    \item Investigating mathematical optimization of sensor modality, quantity, and spatial placement across municipal wastewater networks to proactively detect chokes, overflows, and blockages.
+    \item Conducted an extensive systematic literature review synthesizing 50+ peer-reviewed papers into an interactive, searchable digital library with metadata filters and summaries.
+    \item Formulated a comparative trade-off matrix covering 16+ sensor types: radar, ultrasonic, LiDAR, ToF, float, tilt, pulse, conductivity, temperature, pH, turbidity, UV/Vis, fluorescence, $\text{H}_2\text{S}$ gas, acoustic, and CCTV.
+    \item Analyzed real-world operational constraints: wireless telemetry (LoRaWAN/cellular), battery lifecycle, biofilm fouling, sensor calibration drift, physical manhole access, hazardous maintenance, redundancy, and capital vs operational expenditure (CapEx/OpEx).
+    \item Formulated a mathematical sensor-placement optimization model on network graphs using binary decision variables, information entropy, mutual information, Fisher information matrices, source distinguishability, and detection latency.
+    \item Investigated combinatorial solvers: greedy submodular optimization, NSGA-II/III multi-objective genetic algorithms, network centrality heuristics, and Mixed-Integer Linear Programming (MILP).
+    \item Produced client presentations, project charters, Paper 1, and Paper 2.
+  \end{itemize}
+  \begin{metricsbox}[colback=prototypebg!35!white, colframe=prototype!50!white, fontupper=\footnotesize\color{prototype!90!black}]
+    \textbf{\faIcon{exclamation-triangle}\ Integrity Note:} Work represents \textbf{rigorous research, literature synthesis, and mathematical formulation}. Do not claim physical field deployment or a validated utility network model.
+  \end{metricsbox}
+  \begin{resumebox}
+    \textbf{\color{accent}\faIcon{briefcase}\ Ready-to-Use Resume Bullet:}\\
+    Conducted literature-led sensor-placement research for wastewater monitoring, synthesising sensor modalities, network topology, maintenance constraints, telemetry, lifecycle cost, and optimisation methods into a searchable evidence library and scoped mathematical framework.
+  \end{resumebox}
+\end{projectcard}
+
+% 1.8 Sisic Music
+\begin{projectcard}
+  \textbf{\large 1.8 Sisic Music: Interactive Web Audio Platform} \hfill \statusprototype\\[2pt]
+  {\footnotesize\color{textmuted}\textbf{Evidence:} \underline{Sisic Music Web Application}}
+  \begin{itemize}[leftmargin=14pt, itemsep=1.5pt, topsep=2pt]
+    \item Architected an interactive music streaming web application built with React, Vite, and modern Web Audio APIs.
+    \item Engineered a custom studio-deck vinyl turntable interface featuring realistic vinyl scratching, tonearm tracking physics, drag-to-seek, rotational inertia, mechanical brake decay, RPM tempo adjustments, and custom keyboard sliders.
+    \item Integrated Dexie.js / IndexedDB client-side database, lazy loading, service workers for offline caching, and native Node test suites.
+    \item Built a headless media ingestion pipeline on macOS utilizing yt-dlp, FFmpeg audio transcoding, browser cookies, and metadata tagging.
+    \item Engineered robust title-matching regex algorithms to preserve authentic video titles while filtering out low-quality re-uploads and unrelated music videos.
+    \item Implemented dynamic artwork extraction, taste profile generation, audio embedding vectors, instant search, queue management, and automated browser smoke tests.
+  \end{itemize}
+  \begin{resumebox}
+    \textbf{\color{accent}\faIcon{briefcase}\ Ready-to-Use Resume Bullet:}\\
+    Developed a React music platform with an interactive vinyl turntable, expanded player, queue-backed media workflows, Google Drive integration, yt-dlp/FFmpeg processing, and browser-tested playback interactions.
+  \end{resumebox}
+\end{projectcard}
+
+\newpage
+
+% 1.9 Cybersecurity
+\begin{projectcard}
+  \textbf{\large 1.9 Cybersecurity Incident Post-Mortem and Enterprise Risk Assessment} \hfill \statuscompleted\\[2pt]
+  {\footnotesize\color{textmuted}\textbf{Evidence:} \underline{Log4Shell Report} \quad\textbar\quad \underline{AgeWell Risk Assessment}}
+  \begin{itemize}[leftmargin=14pt, itemsep=1.5pt, topsep=2pt]
+    \item \textbf{Log4Shell Exploit Analysis (CVE-2021-44228):} Authored an exhaustive technical dissection of the Apache Log4j JNDI/LDAP remote code execution (RCE) vulnerability. Documented exploit chains, affected assets, root causes, attacker attribution, detection signatures, WAF regex rules, outbound LDAP blocking, SOC playbooks, SBOMs, and defence-in-depth principles.
+    \item \textbf{AgeWell Innovations Risk Assessment:} Conducted an enterprise security risk assessment for an AI-enabled aged-care digital transformation involving remote telemetry and unmanaged BYOD endpoints.
+    \item Constructed a formal 5x5 Likelihood vs.\ Impact risk matrix identifying 5 critical attack scenarios.
+    \item Designed mitigation architecture: Mobile Device Management (MDM), application containerization, Role-Based Access Control (RBAC), Multi-Factor Authentication (MFA), Privileged Access Management (PAM), AES-256 encryption at rest/transit, zero-trust VPNs, binary allowlisting, phishing simulation, and phased compliance governance.
+    \item Mapped controls to Australian Privacy Principles (APPs), Notifiable Data Breaches (NDB) scheme, ACSC Essential Eight, NIST Cybersecurity Framework, and ISO/IEC 27001.
+  \end{itemize}
+  \begin{resumebox}
+    \textbf{\color{accent}\faIcon{briefcase}\ Ready-to-Use Resume Bullet:}\\
+    Produced cybersecurity incident and risk assessments covering Log4Shell, AI-enabled aged-care systems, supply-chain risk, identity controls, encryption, endpoint management, monitoring, and governance.
+  \end{resumebox}
+\end{projectcard}
+
+% 1.10 SMARTGUARD
+\begin{projectcard}
+  \textbf{\large 1.10 SMARTGUARD: Proactive Unattended-Object Detection Architecture} \hfill \statusconcept\\[2pt]
+  {\footnotesize\color{textmuted}\textbf{Evidence:} \underline{SMARTGUARD Major Project Report (MAJOR\_PROJECT\_REPORT2023.docx)}}
+  \begin{itemize}[leftmargin=14pt, itemsep=1.5pt, topsep=2pt]
+    \item Co-designed a proactive automated surveillance system concept for detecting abandoned luggage and unattended objects in transport terminals and airports.
+    \item Formulated a vision pipeline combining adaptive background reference-frame differencing with Region-of-Interest (ROI) segmentation to isolate static items.
+    \item Designed integration with deep object detectors (YOLO, Faster R-CNN, SSD) paired with multi-object centroid tracking to compute unattended idle duration.
+    \item Defined tiered automated alert triggers based on stationary dwell time thresholds and security operator escalation pathways.
+    \item Produced system architecture specifications, requirements analysis, academic literature reviews, and engineering design posters.
+  \end{itemize}
+  \begin{metricsbox}[colback=prototypebg!35!white, colframe=prototype!50!white, fontupper=\footnotesize\color{prototype!90!black}]
+    \textbf{\faIcon{exclamation-triangle}\ Integrity Note:} Frame as a \textbf{co-designed architectural concept and technical specification} (do not claim deployed production system).
+  \end{metricsbox}
+  \begin{resumebox}
+    \textbf{\color{accent}\faIcon{briefcase}\ Ready-to-Use Resume Bullet:}\\
+    Co-designed a proactive surveillance concept for unattended-object detection using reference-frame comparison, ROI-based detection, object tracking, and time-based alerts.
+  \end{resumebox}
+\end{projectcard}
+
+\newpage
+
+% 1.11 SimplProcure
+\begin{projectcard}
+  \textbf{\large 1.11 SimplProcure: Managed Supply-Chain \& Manufacturing Marketplace} \hfill \statusconcept\\[2pt]
+  {\footnotesize\color{textmuted}\textbf{Evidence:} \underline{SimplProcure Pitch Deck} \quad\textbar\quad \underline{Startup Insights Document}}
+  \begin{itemize}[leftmargin=14pt, itemsep=1.5pt, topsep=2pt]
+    \item Formulated early product strategy, market research, and technical architecture for a B2B Manufacturing-as-a-Service (MaaS) and managed supply-chain marketplace.
+    \item Conducted market research across four key verticals: home décor, commercial construction, healthcare supplies, and educational institutions.
+    \item Architected platform modules: automated supplier discovery, demand aggregation algorithms, quality-assurance inspection workflows, multi-modal logistics routing, CAD design replication verification, managed procurement milestones, and trade finance/escrow.
+    \item Authored investment pitch decks, financial unit economics models, and customer validation interviews as founding technical lead.
+  \end{itemize}
+  \begin{resumebox}
+    \textbf{\color{accent}\faIcon{briefcase}\ Ready-to-Use Resume Bullet:}\\
+    Developed early product strategy and technical direction for SimplProcure, a managed supply-chain marketplace covering supplier discovery, quality assurance, logistics, manufacturing, and financing.
+  \end{resumebox}
+\end{projectcard}
+
+% 1.12 Recipe Zine
+\begin{projectcard}
+  \textbf{\large 1.12 Multilingual Family-Recipe Zine Workflow \& Hosted Web Application} \hfill \statusprototype\\[2pt]
+  {\footnotesize\color{textmuted}\textbf{Evidence:} \underline{Workflow Spec} \quad\textbar\quad \underline{Recipe App Source}}
+  \begin{itemize}[leftmargin=14pt, itemsep=1.5pt, topsep=2pt]
+    \item Designed a 3-page portrait digital and print culinary zine workflow focused on preserving regional Telugu and multilingual family culinary heritage.
+    \item Enforced strict cultural and culinary safeguards to preserve exact verbatim voice transcripts, prevents hallucinated ingredients, and protects authentic measurements.
+    \item Architected workflow pipeline: raw voice transcription, bilingual Telugu-to-English translation, culinary photo styling, hand-drawn step illustrations, process infographics, nutritional estimates, and cultural origin notes.
+    \item Built a responsive hosted web application using Next.js / Vinext featuring page-turn navigation, editorial typography, sample loading, and print-to-PDF export styling.
+  \end{itemize}
+  \begin{resumebox}
+    \textbf{\color{accent}\faIcon{briefcase}\ Ready-to-Use Resume Bullet:}\\
+    Designed and implemented a multilingual family-recipe zine workflow and hosted front-end prototype with exact-text preservation, bilingual output, page navigation, print export, and editorial visual design.
+  \end{resumebox}
+\end{projectcard}
+
+\newpage
+
+% 1.13 Clicky for macOS
+\begin{projectcard}
+  \textbf{\large 1.13 Clicky for macOS (Apple MLX Edition): On-Device AI Vision-Language Agent} \hfill \statuscompleted\\[2pt]
+  {\footnotesize\color{textmuted}\textbf{Evidence:} \underline{Clicky macOS Repository} \quad\textbar\quad \underline{Full System Test Suite} \quad\textbar\quad \underline{Native App Builder}}
+  \begin{itemize}[leftmargin=14pt, itemsep=1.5pt, topsep=2pt]
+    \item Engineered an ultra-fast, 100\% local AI cursor companion and autonomous desktop agent running natively on Apple Silicon Metal GPUs.
+    \item Integrated Apple MLX with 4-bit quantized Qwen2-VL (2B/3B parameters), achieving sub-second screen understanding with zero cloud API dependencies.
+    \item Built an on-device speech pipeline combining NEON-accelerated \texttt{faster-whisper} (STT) and high-fidelity Microsoft Edge Neural TTS with native macOS \texttt{say} fallback.
+    \item Developed a low-overhead PyQt6 floating overlay with cubic-bezier cursor flight animation, pulsing dwell ring indicators, and dynamic canvas annotations (\texttt{[ARROW]}, \texttt{[CIRCLE]}, \texttt{[LABEL]}).
+    \item Implemented HeyClicky Max Agent Mode capable of autonomous multi-step execution: sandboxed macOS \texttt{zsh} command execution, AST project file editing, DuckDuckGo research, and AppleScript GUI automation.
+    \item Compiled a standalone native macOS \texttt{.app} bundle via custom C launcher stub (\texttt{launcher.c}) and Mach-O packaging scripts.
+  \end{itemize}
+  \begin{metricsbox}
+    \textbf{\faIcon{chart-bar}\ Empirical Results:} Token Generation Speed: \textbf{80--120+ tokens/sec} \quad\textbar\quad Memory Footprint: \textbf{$\approx$1.8 GB VRAM (Unified Memory)} \quad\textbar\quad Network Cost: \textbf{\$0 / 100\% Private Offline}.
+  \end{metricsbox}
+  \begin{resumebox}
+    \textbf{\color{accent}\faIcon{briefcase}\ Ready-to-Use Resume Bullet:}\\
+    Engineered Clicky for macOS, an on-device vision-language cursor companion and autonomous agent using Apple MLX, 4-bit Qwen2-VL, faster-whisper, and PyQt6, achieving 80+ tokens/sec Metal GPU inference under 1.8 GB RAM.
+  \end{resumebox}
+\end{projectcard}
+
+% 1.14 WhatsApp Web Clone & Export Viewer
+\begin{projectcard}
+  \textbf{\large 1.14 WhatsApp Web Export Viewer \& Client-Side Archive Browser} \hfill \statuscompleted\\[2pt]
+  {\footnotesize\color{textmuted}\textbf{Evidence:} \href{https://siddhu-123.github.io/whatsapp-clone/}{\underline{Live Web Application}} \quad\textbar\quad \href{https://github.com/Siddhu-123/whatsapp-clone}{\underline{GitHub Repository}} \quad\textbar\quad \underline{Project Source}}
+  \begin{itemize}[leftmargin=14pt, itemsep=1.5pt, topsep=2pt]
+    \item Architected and deployed a 100\% private, client-side WhatsApp Web reproduction and multi-chat archive browser hosted live on GitHub Pages.
+    \item Built with modern frontend stack: React 18, TypeScript, Tailwind CSS, Vite, and Lucide Icons, ensuring responsive desktop and mobile viewports.
+    \item Developed robust regex-based chat log parsers supporting both iOS and Android \texttt{\_chat.txt} timestamp dialects, system notices, and inline media references.
+    \item Integrated client-side JSZip archive streaming and IndexedDB caching for smooth exploration of multi-gigabyte chat archives without memory crashes.
+    \item Engineered in-browser HTML5 Audio waveform playback for \texttt{.opus} voice notes, media modal galleries for photos/videos, and instant zero-latency client search.
+    \item Implemented client-side cryptographic lock screen with auto-lock timers, companion browser extension integration, and zero telemetry.
+  \end{itemize}
+  \begin{metricsbox}
+    \textbf{\faIcon{chart-bar}\ Empirical Results:} Cloud Infrastructure Cost: \textbf{\$0 / Static GitHub Pages} \quad\textbar\quad Data Privacy: \textbf{Zero Server Exfiltration (100\% In-Browser)} \quad\textbar\quad Archive Support: \textbf{Multi-GB Zip Files}.
+  \end{metricsbox}
+  \begin{resumebox}
+    \textbf{\color{accent}\faIcon{briefcase}\ Ready-to-Use Resume Bullet:}\\
+    Architected and deployed a serverless, client-side WhatsApp Web archive viewer in React, TypeScript, and Vite with streaming JSZip extraction, IndexedDB caching, and in-browser Opus audio playback.
+  \end{resumebox}
+\end{projectcard}
+
+\newpage
+
+% 1.15 Secret Password Generator & DetPass
+\begin{projectcard}
+  \textbf{\large 1.15 Secret Password Generator \& DetPass: Zero-Storage Cryptographic KDF} \hfill \statuscompleted\\[2pt]
+  {\footnotesize\color{textmuted}\textbf{Evidence:} \href{https://chromewebstore.google.com/detail/secret-password-generator/mfgnlfigpdcgfmndaljciagcgjiicnal}{\underline{Chrome Web Store (Live Extension)}} \quad\textbar\quad \underline{Manifest V3 Source} \quad\textbar\quad \underline{SwiftUI iOS App}}
+  \begin{itemize}[leftmargin=14pt, itemsep=1.5pt, topsep=2pt]
+    \item Published an official Google Chrome Web Store extension (Manifest V3) delivering stateless, deterministic password generation with zero cloud storage.
+    \item Implemented PBKDF2-HMAC-SHA256 key derivation (100,000 to 600,000 iterations) to mathematically derive site-specific 12-character passwords on-the-fly.
+    \item Designed shoulder-surfing protection featuring crying-cat masking (\texttt{(T\_T)} / crying-cat emoji), long-press temporary reveal, 20-second auto-clear timers, and automatic clipboard wiping.
+    \item Ported cryptographic architecture to a native iOS SwiftUI application (\texttt{DetPass}) with custom WidgetKit integration for Home Screen quick access.
+    \item Zero databases to compromise: user master secret and generated passwords exist exclusively in transient view state memory.
+  \end{itemize}
+  \begin{metricsbox}
+    \textbf{\faIcon{chart-bar}\ Empirical Results:} Cryptographic Iterations: \textbf{Up to 600,000 (PBKDF2-SHA256)} \quad\textbar\quad Database Footprint: \textbf{0 Bytes (Stateless)} \quad\textbar\quad Verification: \textbf{Google Chrome Store Verified}.
+  \end{metricsbox}
+  \begin{resumebox}
+    \textbf{\color{accent}\faIcon{briefcase}\ Ready-to-Use Resume Bullet:}\\
+    Published a verified Chrome Web Store extension and native SwiftUI iOS app for deterministic password generation using PBKDF2-HMAC-SHA256 (600k iterations) with a zero-vault stateless architecture.
+  \end{resumebox}
+\end{projectcard}
+
+\newpage
+
+% ==========================================
+% SECTION 2: AI & ML COURSEWORK
+% ==========================================
+\section{Complete Machine-Learning and AI Coursework Inventory}
+
+\subsection{2.1 Core AIML Assignments and Practical Work}
+{\footnotesize\color{textmuted}\faIcon{folder-open}\ Evidence: \underline{AIML Notebooks Repository} \quad\textbar\quad \underline{TinyML Presentation}}
+
+\begin{miniprojectcard}
+  \textbf{Linear Regression from Scratch} \hfill \statuscompleted\\[1pt]
+  Built pure NumPy linear regression model. Derived analytical gradients, implemented batch gradient descent, computed Mean Squared Error (MSE), plotted loss curves, and verified $R^2$ goodness-of-fit metrics against Matplotlib visual overlays.
+\end{miniprojectcard}
+
+\begin{miniprojectcard}
+  \textbf{Principal Component Analysis (PCA) \& K-Means from Scratch} \hfill \statuscompleted\\[1pt]
+  Implemented PCA from first principles using covariance matrix eigenvalue decomposition; projected high-dimensional data (hundreds of features) onto 2 principal components. Built K-Means clustering from scratch with Euclidean distance centroid recomputation and convergence visualizations.
+\end{miniprojectcard}
+
+\begin{miniprojectcard}
+  \textbf{LightGBM Multiclass Classification} \hfill \statuscompleted\\[1pt]
+  Trained gradient-boosted decision trees for multiclass classification using stratified K-fold cross-validation. Evaluated log-loss, per-class accuracy, feature importance rankings, and detailed confusion matrices.
+\end{miniprojectcard}
+
+\begin{miniprojectcard}
+  \textbf{5-Class Flower Classification \& Transfer Learning} \hfill \statuscompleted\\[1pt]
+  Developed custom deep CNNs with BatchNorm and L2 regularisation. Benchmarked against pre-trained VGG16, ResNet50, and Vision Transformer (ViT) architectures. Computed comprehensive classification reports and confusion matrices.
+\end{miniprojectcard}
+
+\begin{miniprojectcard}
+  \textbf{Cats-vs-Dogs Binary Classification} \hfill \statuscompleted\\[1pt]
+  Constructed PyTorch CNNs with dropout, real-time spatial data augmentation (rotation, flips, zoom), and early stopping to mitigate severe training overfitting.
+\end{miniprojectcard}
+
+\begin{miniprojectcard}
+  \textbf{Shakespeare Sonnet Autoregressive Generation} \hfill \statuscompleted\\[1pt]
+  Built sequential language models using character embeddings, LSTM, GRU, and Bidirectional RNN cells. Implemented temperature-controlled autoregressive sampling to generate coherent Shakespearean text.
+\end{miniprojectcard}
+
+\begin{miniprojectcard}
+  \textbf{TinyML Ultra-Low Power Audio Classification} \hfill \statuscompleted\\[1pt]
+  Designed a compact 1D/2D CNN for keyword spotting / audio classification on edge microcontrollers. Optimized model using TensorFlow Lite post-training integer quantization (INT8), achieving an ultra-compact footprint of \textbf{13,700 parameters} and \textbf{53.5 KB} binary size.
+\end{miniprojectcard}
+
+\subsection{2.2 Deep Learning Laboratory Projects}
+
+\begin{projectcard}
+  \textbf{Butterfly Image Classifier (Small-Data Curation)} \hfill \statuscompleted\\[2pt]
+  {\footnotesize\color{textmuted}\textbf{Evidence:} \underline{copy.ipynb}}\\
+  Curated a highly constrained small-scale image dataset. Filtered low-information, corrupted, and unreadable images using OpenCV Canny edge-density filtering. Retained 3 clean butterfly classes. Trained a compact PyTorch CNN with batch normalization, dropout, and spatial augmentations on Apple MPS. Benchmarked Adam vs SGD optimizers, achieving \textbf{$\approx$ 96\% validation accuracy} and \textbf{30/30 (100\%)} accuracy on a held-out test split.
+\end{projectcard}
+
+\begin{projectcard}
+  \textbf{Clinical Diabetes Screening with Multi-Layer Perceptrons} \hfill \statuscompleted\\[2pt]
+  {\footnotesize\color{textmuted}\textbf{Evidence:} \underline{DLF Assignment 2 Report (assignment-2-deep.pdf)}}\\
+  Trained an MLP on the Pima Indians Diabetes dataset. Applied strict train-only median imputation and standardization to prevent data leakage. Engineered age bins, BMI-age interaction terms, and log-transformed insulin features. Benchmarked Small, Medium, and Wide architectures with BatchNorm, ReLU, Dropout, Kaiming initialization, and BCEWithLogitsLoss with positive class weighting to prioritize clinical recall over raw accuracy.
+  \begin{metricsbox}
+    \textbf{\faIcon{chart-bar}\ Empirical Results:} Official Test \textbf{Accuracy: 0.747} \quad\textbar\quad \textbf{Recall: 0.862} \quad\textbar\quad \textbf{F1 Score: 0.719} \quad\textbar\quad \textbf{ROC-AUC: 0.851}.
+  \end{metricsbox}
+\end{projectcard}
+
+\begin{projectcard}
+  \textbf{Blood-Cell Image Classification (8 Classes)} \hfill \statuscompleted\\[2pt]
+  {\footnotesize\color{textmuted}\textbf{Evidence:} \underline{Assignment 3 Report (Deep\_Learning\_assignment\_3\_report.pdf)}}\\
+  Built models to classify 8 distinct categories of blood cells. Audited the dataset to eliminate corrupted images, zero-variance frames, and perceptual-hash (pHash) near-duplicates. Applied CLAHE preprocessing. Constructed SimpleCNN, ImprovedCNN, and custom ResNet architectures from scratch. Benchmarked against HOG feature baselines with SVM and Logistic Regression. Tuned AdamW, cosine annealing schedules, label smoothing, and gradient clipping.
+  \begin{metricsbox}
+    \textbf{\faIcon{chart-bar}\ Empirical Results:} Custom ResNet architecture achieved \textbf{98.75\% validation accuracy}, heavily outperforming classical HOG baselines.
+  \end{metricsbox}
+\end{projectcard}
+
+\newpage
+
+\subsection{2.3 Generative AI Projects, FER2013 \& Multimodal Learning}
+
+\begin{projectcard}
+  \textbf{Convolutional Variational Autoencoder (VAE) on MNIST} \hfill \statuscompleted\\[2pt]
+  {\footnotesize\color{textmuted}\textbf{Evidence:} \underline{A2 Notebook}}\\
+  Constructed a convolutional VAE in PyTorch. Implemented Gaussian reparameterization ($\mu + \sigma \odot \epsilon$) over a 16-dimensional latent space. Formulated loss using Binary Cross-Entropy reconstruction and KL divergence with monotonic/cyclical annealing. Utilized ConvTranspose2d, SiLU activations, and BatchNorm layers. Trained 20 epochs on Apple Silicon MPS. Visualized 2D spherical latent interpolations and generated crisp synthetic digit grids.
+\end{projectcard}
+
+\begin{projectcard}
+  \textbf{FER2013 Facial Emotion Classification \& Ethics Analysis} \hfill \statuscompleted\\[2pt]
+  {\footnotesize\color{textmuted}\textbf{Evidence:} \underline{FER2013 Report}}\\
+  Trained PyTorch MLPs and CNNs on 48x48 FER2013 facial data. Held out PublicTest and PrivateTest splits. Used data augmentation, cosine scheduling, and macro-F1 early stopping. Highlighted fundamental failure modes on minority classes: MLP reached $\approx$ 0.37 accuracy, while CNN reached $\approx$ 0.55 accuracy with macro-F1 around 0.43. Authored an ethical impact assessment documenting why facial emotion recognition should not be deployed in high-stakes human decision-making.
+\end{projectcard}
+
+\begin{projectcard}
+  \textbf{Multimodal Zero-Shot CLIP, Cross-Modal Adapters, and DCGAN} \hfill \statuscompleted\\[2pt]
+  {\footnotesize\color{textmuted}\textbf{Evidence:} \underline{Assignment 2 Notebook (Assignment2.ipynb)}}\\
+  Benchmarked OpenAI CLIP ViT-B/16 and ViT-B/32 zero-shot classification on MNIST with prompt engineering and t-SNE embedding visualizations. Trained linear and residual MLP cross-modal adapters over frozen CLIP image/text embeddings for Flickr30k retrieval (evaluating bidirectional Recall@K). Built a Deep Convolutional GAN (DCGAN) on Fashion-MNIST with transposed convolutions and LeakyReLU.
+\end{projectcard}
+
+% ==========================================
+% SECTION 3: DATA SCIENCE & STATISTICS
+% ==========================================
+\section{Data Science and Statistics Projects}
+
+\begin{miniprojectcard}
+  \textbf{3.1 Data Taming Assignment 1: Tidy Data \& Non-Parametric Statistics} \hfill \statuscompleted\\[2pt]
+  {\footnotesize\color{textmuted}\textbf{Evidence:} \underline{Data Taming Assignment 1 (Quarto)}}\\
+  Executed comprehensive data restructuring using R, tidyverse, and Quarto. Ingested messy international cricket batting records and converted from wide to long format. Extracted batting orders, runs, balls faced, teams, and player roles. Cleaned and structured board-game datasets. Constructed publication-quality ggplot2 visualizations including faceted histograms, boxplots, and scatter distributions. Applied non-parametric Wilcoxon rank-sum hypothesis testing to compare game performance distributions.
+\end{miniprojectcard}
+
+\begin{miniprojectcard}
+  \textbf{3.2 Data Taming Assignment 2: Log-Linear Regression \& Market Modeling} \hfill \statuscompleted\\[2pt]
+  {\footnotesize\color{textmuted}\textbf{Evidence:} \underline{Assignment 2 Data Taming New Student 2026.qmd}}\\
+  Analyzed market revenue dynamics across $\approx$ 7,700 commercial board games. Compared raw and log-transformed revenue distributions. Built and evaluated ordinary least squares (OLS) linear and log-linear econometric models. Evaluated regression diagnostics (residual normality, heteroskedasticity, leverage points), computed prediction intervals, and interpreted economic rating coefficients for commercial strategy.
+\end{miniprojectcard}
+
+\begin{miniprojectcard}
+  \textbf{3.3 Data Taming Assignment 3: Tidymodels Machine Learning Pipeline} \hfill \statusprogress\\[2pt]
+  Constructed a full predictive pipeline in R using \texttt{tidymodels}. One-hot encoded game categories, defined high-rating binary targets, eliminated data-leakage variables, and enforced a stratified 75/25 train/test split. Formulated recipe workflows and hyperparameter grids for K-Nearest Neighbors (KNN) and Decision Tree classifiers with 5-fold cross-validation tracking accuracy and ROC-AUC.
+\end{miniprojectcard}
+
+% ==========================================
+% SECTION 4: CS & ALGORITHMS
+% ==========================================
+\section{Computer Science and Algorithms Portfolio}
+
+\begin{tcolorbox}[enhanced, colback=white, colframe=cardborder, boxrule=0.5pt, arc=3pt, left=8pt, right=8pt, top=6pt, bottom=6pt]
+  \textbf{Core Software Engineering \& Algorithmic Implementations} \hfill \statuscompleted\\[4pt]
+  \begin{tabularx}{\textwidth}{@{}lX@{}}
+    \toprule
+    \textbf{Discipline} & \textbf{Demonstrated Implementations} \\
+    \midrule
+    \textbf{Object-Oriented Programming} & Encapsulation, inheritance hierarchies, composition, aggregation, polymorphic dispatch, clean class interfaces, robust error handling in Python. \\
+    \textbf{Data Structures} & Singly/doubly linked lists, LIFO stacks, FIFO queues, binary min/max heaps via \texttt{heapq}, Binary Search Trees (node insertion, deletion, range trimming, traversals, word frequency indexing). \\
+    \textbf{Sorting Algorithms} & Selection sort, Bubble sort, Insertion sort, Quick sort, Median-of-three pivot Quicksort, multi-key dictionary and string sorting. \\
+    \textbf{Searching Algorithms} & Linear search, weighted binary search, jump search, interpolation search, tolerance-based floating-point search. \\
+    \textbf{Graph Algorithms} & Adjacency representations, Breadth-First Search (BFS), Depth-First Search (DFS), Dijkstra's shortest-path using priority queues, RoadNetwork test harness, unreachable-node exceptions. \\
+    \textbf{Engineering Discipline} & Test-Driven Development (TDD), unit testing suites, structured JSON/CSV I/O, pandas/NumPy vectorization. \\
+    \bottomrule
+  \end{tabularx}
+\end{tcolorbox}
+
+\newpage
+
+% ==========================================
+% SECTION 5: CYBERSECURITY LABS
+% ==========================================
+\section{Cybersecurity Labs and Technical Exercises}
+
+\begin{projectcard}
+  \textbf{SOC, Threat Hunting \& Vulnerability Analysis Lab Portfolio} \hfill \statuscompleted\\[2pt]
+  \begin{itemize}[leftmargin=14pt, itemsep=1.5pt, topsep=2pt]
+    \item \textbf{SIEM Operations \& Threat Hunting:} Forensic investigations using Sysmon and Splunk. Analyzed \texttt{rundll32.exe} execution paths, malicious Scheduled Tasks, correlated Sysmon Event ID 129 with Windows Security Event 4688, and detected obfuscated PowerShell commands.
+    \item \textbf{Host Intrusion Detection (HIDS):} Deployed Wazuh server/agent infrastructure and OSSEC manager. Configured File Integrity Monitoring (FIM), custom rule IDs, and monitored SSH brute-force bursts.
+    \item \textbf{Network Reconnaissance:} Authorized SNMP community string enumeration using Nmap and \texttt{snmp-brute} scripts in isolated virtual laboratories.
+    \item \textbf{Threat Intelligence \& MITRE ATT\&CK:} Mapped real-world cyber incidents to MITRE ATT\&CK techniques: T1218.011 (Signed Binary Proxy Execution: Rundll32), Log4Shell (CVE-2021-44228), MOVEit Transfer SQLi (CVE-2023-34362), Storm-0978 RomCom malware, Heartbleed, Shellshock, Pass-the-Hash (PtH), Process Hollowing, and \texttt{Utilman.exe} privilege escalation backdoors.
+    \item \textbf{Security Frameworks:} Designed risk registers, Likelihood/Impact matrices, and mitigation plans incorporating MDM, RBAC, MFA, PAM, zero-trust VPNs, AES-256 encryption, WAF rules, and SBOMs mapped to NIST CSF, Essential Eight, and ISO 27001.
+  \end{itemize}
+  \begin{resumebox}
+    \textbf{\color{accent}\faIcon{briefcase}\ Ready-to-Use Resume Bullet:}\\
+    Completed cybersecurity labs involving SIEM/EDR monitoring, Sysmon and Windows-event analysis, Wazuh/OSSEC deployment, MITRE ATT\&CK mapping, vulnerability analysis, authorised network enumeration, and incident response.
+  \end{resumebox}
+\end{projectcard}
+
+% ==========================================
+% SECTION 6: ROBOTICS & EMBEDDED
+% ==========================================
+\section{Robotics, Embedded Systems, and IoT Work}
+
+\begin{miniprojectcard}
+  \textbf{6.1 Early Bluetooth-Controlled Self-Balancing Robot} \hfill \statuscompleted\\[2pt]
+  {\footnotesize\color{textmuted}\textbf{Evidence:} \underline{CBP\_MC Phase 1 PPT}}\\
+  Prototyped a two-wheeled balancing platform using Arduino Uno/Nano, MPU6050 accelerometer/gyroscope, HC-05 Bluetooth module, and DC gear motors. Developed closed-loop PID balancing firmware in Arduino IDE to stabilize inverted pendulum dynamics while accepting directional commands via Bluetooth.
+\end{miniprojectcard}
+
+\begin{miniprojectcard}
+  \textbf{6.2 Robotics Middleware \& Perception Prototypes} \hfill \statusprototype\\[2pt]
+  \begin{itemize}[leftmargin=14pt, itemsep=1.5pt, topsep=1pt]
+    \item \textbf{ROS \& TurtleBot3:} Programmed ROS / \texttt{rospy} nodes to publish velocity commands and navigate TurtleBot3 mobile bases.
+    \item \textbf{FastAPI Robot Services:} Built high-performance FastAPI endpoints receiving QR code JSON payloads to trigger physical robot actions and audio announcements.
+    \item \textbf{Edge Compute \& Vision:} Integrated NVIDIA Jetson Xavier NX and Raspberry Pi 4 with Intel RealSense D435 RGB-D depth cameras, implementing depth-to-color alignment and real-time ONNX runtime object detection.
+    \item \textbf{Actuation \& Control:} Interfaced OpenCR microcontrollers over serial and controlled Dynamixel smart servos via Dynamixel SDK, executing multi-threaded visual tracking and motor angle calculations.
+    \item \textbf{IoT Microcontrollers:} Deployed ESP32-CAM video streaming servers over HTTP, interfaced Raspberry Pi GPIOs, and evaluated TensorFlow Lite inference latency on embedded ARM chips.
+  \end{itemize}
+\end{miniprojectcard}
+
+% ==========================================
+% SECTION 7: UI/UX & WEB
+% ==========================================
+\section{UI/UX, Web, and Application Projects}
+
+\begin{miniprojectcard}
+  \textbf{7.1 Professional UI/UX Internship --- Web Synergies} \hfill \statuscompleted\\[2pt]
+  {\footnotesize\color{textmuted}\textbf{Evidence:} \underline{Experience Letter} \quad\textbar\quad \href{https://www.behance.net/gallery/184968613/my-UIUX-portfolio}{\underline{Behance Portfolio}}}\\
+  Worked as UI/UX Intern (Sept--Nov 2023) collaborating with cross-functional design and development teams. Conducted user research, stakeholder interviews, user journey mapping, and persona synthesis. Created wireframes, high-fidelity mockups, and interactive clickable prototypes using Figma. Executed usability testing, cognitive walkthroughs, and applied WCAG 2.1 accessibility standards.
+\end{miniprojectcard}
+
+\begin{miniprojectcard}
+  \textbf{7.2 Voice-Interactive English-Proficiency Application \& React Modules} \hfill \statusprototype\\[2pt]
+  Developed an interactive React application for English learning with Web Speech API voice-controlled quiz navigation, restart logic, and Ngrok tunnels. Engineered advanced modules: WebRTC microphone capture, Axios REST pipelines, touch drag-and-drop, Recharts dashboards, Intro.js product tours, Fuse.js fuzzy search, and custom media player controls.
+\end{miniprojectcard}
+
+\begin{miniprojectcard}
+  \textbf{7.3 Techtopia: Procedural Isometric Steampunk Simulation Game} \hfill \statuscompleted\\[2pt]
+  {\footnotesize\color{textmuted}\textbf{Evidence:} \underline{Techtopia Engine Handoff} \quad\textbar\quad \underline{World Bible} \quad\textbar\quad \underline{Godot 4 Project}}\\
+  Engineered an authored procedural isometric simulation game in Godot 4 / GDScript featuring a 12-region industrial world. Developed custom volumetric material shaders and cylindrical curvature shading (specular highlights, midtones, core shadows, and ground contact shadows) in \texttt{ContinuityArt.gd}. Implemented an economy system driven by physical infrastructure constraints, save/load contracts, and automated headless test suites (\texttt{TestContinuity.tscn}).
+\end{miniprojectcard}
+
+\begin{miniprojectcard}
+  \textbf{7.4 NotchBox: Native macOS Dynamic Notch Drop-Shelf Utility} \hfill \statusprototype\\[2pt]
+  {\footnotesize\color{textmuted}\textbf{Evidence:} \underline{Swift Package Spec} \quad\textbar\quad \underline{SwiftUI Sources}}\\
+  Built a native macOS utility in Swift and SwiftUI utilizing AppKit window-level layering to create a drop-shelf behind the MacBook Pro camera notch. Supports low-latency file drag-and-drop staging, clipboard history caching, and native macOS physics animations.
+\end{miniprojectcard}
+
+% ==========================================
+% SECTION 8: PROJECT MANAGEMENT
+% ==========================================
+\section{Project Management Work}
+
+\begin{miniprojectcard}
+  \textbf{8.1 Apple AirPower Product Failure: PMBOK Case Study} \hfill \statuscompleted\\[2pt]
+  {\footnotesize\color{textmuted}\textbf{Evidence:} \underline{PMF Assignment Report}}\\
+  Conducted an in-depth PMBOK failure analysis of Apple's cancelled AirPower mat. Evaluated scope creep, thermal engineering limits, stage-gate breakdowns, risk registers, value engineering, go/no-go thresholds, and sustainability impacts.
+  \begin{resumebox}
+    \textbf{\color{accent}\faIcon{briefcase}\ Ready-to-Use Resume Bullet:}\\
+    Applied PMBOK scope, cost, risk, change-control, feasibility, and sustainability concepts to analyse Apple's AirPower product-development failure.
+  \end{resumebox}
+\end{miniprojectcard}
+
+\begin{miniprojectcard}
+  \textbf{8.2 ABS Homes Commercial Project Management Plan} \hfill \statuscompleted\\[2pt]
+  {\footnotesize\color{textmuted}\textbf{Evidence:} \underline{Group 73 Project Plan (Group\_73\_group\_assignment.docx)}}\\
+  Served as \textbf{Project Manager} for Group 73. Authored Project Charter, Work Breakdown Structure (WBS), milestone schedules, Stakeholder Register, Power-Interest Grid, comprehensive Risk Register with qualitative scoring, communications matrix, escalation pathways, and document governance.
+\end{miniprojectcard}
+
+\newpage
+
+% ==========================================
+% SECTION 9: ETHICS & RESPONSIBLE AI
+% ==========================================
+\section{Ethics, Responsible AI, and Policy Work}
+
+\begin{projectcard}
+  \textbf{Responsible AI, Algorithmic Fairness \& Ethical Policy Portfolio} \hfill \statuscompleted\\[2pt]
+  \begin{itemize}[leftmargin=14pt, itemsep=1.5pt, topsep=2pt]
+    \item \textbf{AI vs.\ Performers \& Likeness Rights:} Poster on synthetic media in entertainment: voice/likeness rights, digital scanning, performer displacement, posthumous consent, SAG-AFTRA protections. \underline{Evidence: Poster Cons3.pdf}
+    \item \textbf{AI Creativity \& Meme Ethics Case Study:} Evaluated generative AI creativity via Deontological, Utilitarian, and Virtue Ethics. Analyzed copyright infringement in training corpora, artist consent, compensation models, C2PA cryptographic watermarking, and AI labeling. \underline{Evidence: Cadmus Final Submission}
+    \item \textbf{Whistleblower Governance Report:} Addressed unlabelled AI content, lack of training consent, unfair competition, independent auditing committees, and phased compliance governance.
+    \item \textbf{Algorithmic Justice in Public Welfare:} Analyzed automated welfare systems (Robodebt context): human-in-the-loop oversight, disparate impact, algorithmic impact assessments, appeal rights, distributive justice.
+    \item \textbf{Cognitive \& Implicit Bias Mitigation:} Structured practices separating empirical observation from subconscious assumption, incorporating counter-stereotyping and empathetic communication.
+  \end{itemize}
+\end{projectcard}
+
+% ==========================================
+% SECTION 10 & 11: ANDROID, QUANTUM, DESIGN
+% ==========================================
+\begin{minipage}[t]{0.48\textwidth}
+  \section{Android \& Quantum Computing}
+  \begin{miniprojectcard}
+    \textbf{10.1 Native Android Engineering} \hfill \statuscompleted\\[2pt]
+    {\footnotesize\color{textmuted}\textbf{Evidence:} \underline{SDC Report}}\\
+    Built Android apps using Java, XML, and Android Studio: Linear, Relative, Frame, and Table layouts, custom widgets, menus, dialogs, toasts, and local SQLite CRUD queries.
+  \end{miniprojectcard}
+
+  \begin{miniprojectcard}
+    \textbf{10.2 Qiskit Quantum Simulation} \hfill \statuscompleted\\[2pt]
+    {\footnotesize\color{textmuted}\textbf{Evidence:} \underline{Quantum Report}}\\
+    Simulated quantum circuits in IBM Qiskit: superposition, entanglement, Hadamard ($H$), Pauli-$X/Y/Z$, and CNOT gates. Computed statevectors and Bloch transformations.
+  \end{miniprojectcard}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.48\textwidth}
+  \section{Design Thinking \& Surveys}
+  \begin{miniprojectcard}
+    \textbf{11.1 Mobile Addiction DT Prototype} \hfill \statuscompleted\\[2pt]
+    {\footnotesize\color{textmuted}\textbf{Evidence:} \underline{DT Final Prototype}}\\
+    Executed full Design Thinking cycle: screen-time monitoring dashboard, behavioral habit nudges, and remote counseling support integrations.
+  \end{miniprojectcard}
+
+  \begin{miniprojectcard}
+    \textbf{11.2 Computer Vision Survey} \hfill \statuscompleted\\[2pt]
+    {\footnotesize\color{textmuted}\textbf{Evidence:} \underline{Literature Review}}\\
+    Co-authored survey synthesizing OpenCV preprocessing, edge/contour detection, Otsu thresholding, PSO feature selection, and robot visual navigation.
+  \end{miniprojectcard}
+\end{minipage}
+
+% ==========================================
+% SECTION 12: UNFINISHED & CONCEPTS AUDIT
+% ==========================================
+\section{Unfinished, Partial, and Chat-Only Projects (Honest Audit)}
+
+\begin{tcolorbox}[enhanced, colback=white, colframe=cardborder, boxrule=0.5pt, arc=3pt, left=8pt, right=8pt, top=5pt, bottom=5pt]
+  \begin{tabularx}{\textwidth}{@{}lX@{}}
+    \toprule
+    \textbf{Initiative} & \textbf{Truthful Audit Summary \& Current State} \\
+    \midrule
+    \textbf{CosyVoice 2 Local Voice Cloning} & Python 3.11, Apple MPS, 24 kHz synthesis, prompt conditioning, and API endpoints configured. Real reference audio, downloaded weights, and end-to-end WAV generation not fully verified. Hindi/Telugu experimental. \hfill \statusprototype \\
+    \textbf{LJSpeech Text-to-Speech} & Data cleaning, silence trimming, and 13,100 sample text normalization completed. Acoustic model training and vocoder inference were not executed. Frame as data pipeline engineering. \hfill \statusprogress \\
+    \textbf{Data Taming Assignment 3} & Tidymodels recipe, feature engineering, and cross-validation grids prepared in code. Final test split metrics and rendered document were unfinished. \hfill \statusprogress \\
+    \textbf{SiamFC Visual Tracking} & Implemented frame-by-frame visual tracking, bounding box IoU computation, and occlusion recovery logic. Quantitative benchmarking on standard ground-truth tracking datasets remained incomplete. \hfill \statusprototype \\
+    \textbf{Robotics Middleware Sandboxes} & ROS velocity nodes, RealSense depth alignment, Dynamixel serial drivers, Jetson inference, and ESP32-CAM video were executed as separate modular prototypes rather than an integrated commercial robot. \hfill \statusprototype \\
+    \textbf{English-Proficiency App} & React interface and Web Speech API navigation demonstrated. Full curriculum, backend persistence, and production hosting were not completed. \hfill \statusprototype \\
+    \bottomrule
+  \end{tabularx}
+\end{tcolorbox}
+
+\begin{tcolorbox}[enhanced, colback=lightbg, colframe=cardborder, boxrule=0.4pt, arc=3pt, left=8pt, right=8pt, top=4pt, bottom=4pt]
+  {\scriptsize\bfseries\color{primary}\faIcon{lightbulb}\ Technical Explorations \& Product Concepts:}\\[2pt]
+  {\tiny\color{textdark}
+  \textbf{Meme Detection:} OCR + Multimodal VLM humor scoring \quad\textbar\quad
+  \textbf{Messaging Assistant:} LLM automation with supervisor review \quad\textbar\quad
+  \textbf{PDF Expense Analyser:} Bank-statement categorisation \quad\textbar\quad
+  \textbf{NotchBox:} macOS notch productivity tools \quad\textbar\quad
+  \textbf{Living-Assistant UI:} Animated desktop companion \quad\textbar\quad
+  \textbf{College ERP:} Student grading portal wireframes \quad\textbar\quad
+  \textbf{Smart-Home IoT:} Sensor telemetry hub \quad\textbar\quad
+  \textbf{Robot Personality AI:} FSMs for social robotics \quad\textbar\quad
+  \textbf{OpenPodcar:} Autonomous campus mobility \quad\textbar\quad
+  \textbf{Travel Helpline App:} Mobile emergency assistance UX \quad\textbar\quad
+  \textbf{Unity 2D Game:} Multiplayer mechanics exploration \quad\textbar\quad
+  \textbf{Anganwadi AI:} Child nutrition monitoring concept
+  }
+\end{tcolorbox}
+
+\newpage
+
+% ==========================================
+% SECTION 13: TECHNICAL SKILLS MATRIX
+% ==========================================
+\section{Demonstrated Knowledge and Technical Skills Matrix}
+
+\begin{tabularx}{\textwidth}{@{}XX@{}}
+  % Languages
+  \begin{tcolorbox}[enhanced, colback=white, colframe=cardborder, boxrule=0.5pt, arc=3pt, left=6pt, right=6pt, top=4pt, bottom=4pt]
+    {\footnotesize\bfseries\color{accent}\faIcon{code}\ Programming \& Query Languages}\\[3pt]
+    \skilltagacc{Python} \skilltagacc{R} \skilltagacc{JavaScript (ES6+)} \skilltagacc{TypeScript} \skilltagacc{Swift / SwiftUI} \skilltag{Java} \skilltag{Solidity} \skilltag{C / C++} \skilltag{GDScript} \skilltag{SQL} \skilltag{SQLite} \skilltag{HTML5/CSS3}
+  \end{tcolorbox} &
+  % Machine Learning
+  \begin{tcolorbox}[enhanced, colback=white, colframe=cardborder, boxrule=0.5pt, arc=3pt, left=6pt, right=6pt, top=4pt, bottom=4pt]
+    {\footnotesize\bfseries\color{accent}\faIcon{brain}\ Classical Machine Learning}\\[3pt]
+    \skilltagacc{LightGBM} \skilltagacc{Gradient Boosting} \skilltag{Huber Regression} \skilltag{Linear / Logistic Reg} \skilltag{PCA} \skilltag{K-Means} \skilltag{Feature Engineering} \skilltag{Stratified K-Fold CV} \skilltag{ROC-AUC / PR-AUC} \skilltag{F1 / Macro-F1} \skilltag{MAE / RMSE}
+  \end{tcolorbox} \\
+
+  % Deep Learning
+  \begin{tcolorbox}[enhanced, colback=white, colframe=cardborder, boxrule=0.5pt, arc=3pt, left=6pt, right=6pt, top=4pt, bottom=4pt]
+    {\footnotesize\bfseries\color{accent}\faIcon{cogs}\ Deep Learning \& Neural Architectures}\\[3pt]
+    \skilltagacc{PyTorch} \skilltagacc{Apple MLX} \skilltagacc{Metal GPU} \skilltagacc{TensorFlow} \skilltag{Qwen2-VL} \skilltag{4-bit Quantization} \skilltag{TensorFlow Lite} \skilltag{DeepLabV3+} \skilltag{YOLOv8} \skilltag{ResNet} \skilltag{Vision Transformers} \skilltag{CNNs \& MLPs} \skilltag{VAEs} \skilltag{MPS \& CUDA}
+  \end{tcolorbox} &
+  % RL & LLMs
+  \begin{tcolorbox}[enhanced, colback=white, colframe=cardborder, boxrule=0.5pt, arc=3pt, left=6pt, right=6pt, top=4pt, bottom=4pt]
+    {\footnotesize\bfseries\color{accent}\faIcon{robot}\ Reinforcement Learning \& LLMs}\\[3pt]
+    \skilltagacc{PPO} \skilltagacc{DPO} \skilltag{Supervised Fine-Tuning (SFT)} \skilltag{Reward Modeling} \skilltag{GAE} \skilltag{KL Penalties} \skilltag{Reward Hacking Analysis} \skilltag{Perplexity Evaluation} \skilltag{RAG Architecture} \skilltag{Prompt Engineering}
+  \end{tcolorbox} \\
+
+  % Computer Vision
+  \begin{tcolorbox}[enhanced, colback=white, colframe=cardborder, boxrule=0.5pt, arc=3pt, left=6pt, right=6pt, top=4pt, bottom=4pt]
+    {\footnotesize\bfseries\color{accent}\faIcon{eye}\ Computer Vision}\\[3pt]
+    \skilltagacc{OpenCV} \skilltagacc{RGB-D Processing} \skilltagacc{NAFNet Deblurring} \skilltag{Richardson-Lucy} \skilltag{Semantic Segmentation} \skilltag{Object Detection \& Tracking} \skilltag{Depth Inpainting} \skilltag{CLAHE} \skilltag{HOG Features} \skilltag{Canny Edge} \skilltag{3D Geometry} \skilltag{Convex Hulls} \skilltag{CLIP Retrieval}
+  \end{tcolorbox} &
+  % Speech & Audio
+  \begin{tcolorbox}[enhanced, colback=white, colframe=cardborder, boxrule=0.5pt, arc=3pt, left=6pt, right=6pt, top=4pt, bottom=4pt]
+    {\footnotesize\bfseries\color{accent}\faIcon{microphone}\ Speech \& Audio Processing}\\[3pt]
+    \skilltagacc{wav2vec2} \skilltagacc{faster-whisper} \skilltagacc{SpeechT5 \& HiFi-GAN} \skilltag{Edge Neural TTS} \skilltag{Accent Adapters} \skilltag{Contrastive InfoNCE} \skilltag{MFCC Extraction} \skilltag{Pitch / $F_0$ Analysis} \skilltag{RMS Energy} \skilltag{Audio Augmentation} \skilltag{Speech Recognition (ASR)} \skilltag{Text-to-Speech (TTS)}
+  \end{tcolorbox} \\
+
+  % Web & Software
+  \begin{tcolorbox}[enhanced, colback=white, colframe=cardborder, boxrule=0.5pt, arc=3pt, left=6pt, right=6pt, top=4pt, bottom=4pt]
+    {\footnotesize\bfseries\color{accent}\faIcon{globe}\ Web \& Full-Stack Development}\\[3pt]
+    \skilltagacc{React 18} \skilltagacc{TypeScript} \skilltagacc{Vite} \skilltagacc{Chrome Extension (Manifest V3)} \skilltag{Tailwind CSS} \skilltag{Next.js / Vinext} \skilltag{JSZip Streaming} \skilltag{Node.js} \skilltag{Express} \skilltag{REST APIs} \skilltag{IndexedDB / Dexie} \skilltag{Web Audio API} \skilltag{Web Speech API}
+  \end{tcolorbox} &
+  % Web3 & Blockchain
+  \begin{tcolorbox}[enhanced, colback=white, colframe=cardborder, boxrule=0.5pt, arc=3pt, left=6pt, right=6pt, top=4pt, bottom=4pt]
+    {\footnotesize\bfseries\color{accent}\faIcon{link}\ Web3, Security \& Cryptography}\\[3pt]
+    \skilltagacc{Solidity Smart Contracts} \skilltagacc{Hardhat} \skilltagacc{PBKDF2-HMAC-SHA256} \skilltag{Stateless KDF} \skilltag{Ethereum Sepolia} \skilltag{MetaMask Integration} \skilltag{ERC-721 Standards} \skilltag{NFT Minting \& Escrow} \skilltag{Decentralized Storage (IPFS)} \skilltag{Multimodal Asset Search}
+  \end{tcolorbox} \\
+
+  % Robotics & Embedded
+  \begin{tcolorbox}[enhanced, colback=white, colframe=cardborder, boxrule=0.5pt, arc=3pt, left=6pt, right=6pt, top=4pt, bottom=4pt]
+    {\footnotesize\bfseries\color{accent}\faIcon{microchip}\ Robotics, Desktop \& Game Systems}\\[3pt]
+    \skilltagacc{Raspberry Pi (Zero W/4)} \skilltagacc{PyQt6 GUI} \skilltagacc{AppleScript Automation} \skilltag{Godot 4 Engine} \skilltag{Arduino (Uno/Nano)} \skilltag{PID Control} \skilltag{ESP32-CAM} \skilltag{NVIDIA Jetson Xavier NX} \skilltag{ROS \& rospy} \skilltag{Intel RealSense D435} \skilltag{Dynamixel Servos} \skilltag{FastAPI}
+  \end{tcolorbox} &
+  % Cybersecurity
+  \begin{tcolorbox}[enhanced, colback=white, colframe=cardborder, boxrule=0.5pt, arc=3pt, left=6pt, right=6pt, top=4pt, bottom=4pt]
+    {\footnotesize\bfseries\color{accent}\faIcon{shield-alt}\ Cybersecurity \& SOC Operations}\\[3pt]
+    \skilltagacc{Splunk SIEM} \skilltagacc{Sysmon Threat Hunting} \skilltagacc{Wazuh \& OSSEC HIDS} \skilltag{File Integrity Monitoring (FIM)} \skilltag{MITRE ATT\&CK} \skilltag{Log4Shell (CVE-2021-44228)} \skilltag{Nmap \& SNMP} \skilltag{Risk Assessment Matrices} \skilltag{ACSC Essential Eight} \skilltag{NIST CSF \& ISO 27001}
+  \end{tcolorbox} \\
+
+  % Data Science & Stats
+  \begin{tcolorbox}[enhanced, colback=white, colframe=cardborder, boxrule=0.5pt, arc=3pt, left=6pt, right=6pt, top=4pt, bottom=4pt]
+    {\footnotesize\bfseries\color{accent}\faIcon{chart-line}\ Data Science, Statistics \& Research}\\[3pt]
+    \skilltagacc{R Tidyverse} \skilltagacc{Quarto} \skilltag{Log-Linear Regression} \skilltag{Prediction Intervals} \skilltag{Wilcoxon Rank-Sum Tests} \skilltag{Systematic Literature Synthesis} \skilltag{Academic Paper Writing} \skilltag{Patent Draft Specification}
+  \end{tcolorbox} &
+  % Software Engineering
+  \begin{tcolorbox}[enhanced, colback=white, colframe=cardborder, boxrule=0.5pt, arc=3pt, left=6pt, right=6pt, top=4pt, bottom=4pt]
+    {\footnotesize\bfseries\color{accent}\faIcon{tools}\ Software Engineering Practices}\\[3pt]
+    \skilltagacc{Git \& GitHub} \skilltag{Atomic Commits} \skilltag{Test-Driven Development (TDD)} \skilltag{Jupyter Lab} \skilltag{LaTeX Formatting} \skilltag{Deterministic Random Seeding} \skilltag{Model Checkpointing} \skilltag{Kaggle GPU Workflows}
+  \end{tcolorbox} \\
+
+  % PM & UI/UX
+  \begin{tcolorbox}[enhanced, colback=white, colframe=cardborder, boxrule=0.5pt, arc=3pt, left=6pt, right=6pt, top=4pt, bottom=4pt]
+    {\footnotesize\bfseries\color{accent}\faIcon{project-diagram}\ Project Management \& UI/UX}\\[3pt]
+    \skilltagacc{Figma Prototyping} \skilltagacc{User-Centred Design (UCD)} \skilltag{PMBOK Scope \& Cost} \skilltag{Work Breakdown Structures (WBS)} \skilltag{Risk Registers} \skilltag{Power-Interest Grids} \skilltag{Design Thinking} \skilltag{WCAG Accessibility} \skilltag{Usability Testing}
+  \end{tcolorbox} &
+  % Responsible AI
+  \begin{tcolorbox}[enhanced, colback=white, colframe=cardborder, boxrule=0.5pt, arc=3pt, left=6pt, right=6pt, top=4pt, bottom=4pt]
+    {\footnotesize\bfseries\color{accent}\faIcon{balance-scale}\ Responsible AI \& Ethical Governance}\\[3pt]
+    \skilltagacc{Algorithmic Fairness} \skilltagacc{NIST AI Risk Management} \skilltag{EU AI Act Standards} \skilltag{Disparate Impact Auditing} \skilltag{Copyright \& IP Provenance} \skilltag{C2PA Watermarking} \skilltag{Human-in-the-Loop} \skilltag{Deontological \& Utilitarian Ethics}
+  \end{tcolorbox}
+\end{tabularx}
+
+\newpage
+
+% ==========================================
+% SECTION 14: WORK & INTERNSHIPS
+% ==========================================
+\section{Work Experience, Internships, and Leadership Evidence}
+
+\begin{projectcard}
+  \textbf{\large Web Synergies --- UI/UX Intern} \hfill \statuscompleted\\[2pt]
+  {\footnotesize\color{textmuted}\textbf{Tenure:} September 2023 -- November 2023 (Hyderabad / Remote) \quad\textbar\quad \textbf{Evidence:} \underline{Official Experience Letter}}\\
+  Contributed directly to corporate UI/UX client deliverables. Collaborated with senior product designers and front-end engineering teams. Formulated user research protocols, journey maps, and high-fidelity Figma prototypes. Conducted usability testing and implemented WCAG 2.1 accessibility standards across web platforms.
+\end{projectcard}
+
+\begin{projectcard}
+  \textbf{\large Vistan Nextgen --- Data Science/AI/ML and Robotics Product-Pitch Intern} \hfill \statuscompleted\\[2pt]
+  {\footnotesize\color{textmuted}\textbf{Tenure:} July 2024 -- September 2024 (Hyderabad)}\\
+  Contributed to applied Data Science and AI/ML initiatives while spearheading technical demonstrations and product pitches for commercial robotics systems. Delivered live technical presentations to prospective clients and synthesized audience feedback into actionable engineering requirements. \emph{(Honest boundary: Frame as technical demonstration and AI/ML contributor; do not claim proprietary ownership of Vistan commercial robots).}
+\end{projectcard}
+
+\begin{projectcard}
+  \textbf{\large Infidata Technologies --- Web Application Development Intern} \hfill \statuscompleted\\[2pt]
+  Completed intensive web application development training and project work covering HTML5, CSS3, JavaScript, AngularJS, Bootstrap, PHP, MySQL, jQuery, WAMP/XAMPP environments, full SDLC, and browser compatibility testing. \emph{(Note: Verify completion certificates match personal records before formal resume inclusion).}
+\end{projectcard}
+
+\begin{projectcard}
+  \textbf{\large Reliance Digital --- Consumer Electronics Sales Associate} \hfill \statuscompleted\\[2pt]
+  {\footnotesize\color{textmuted}\textbf{Location:} Bengaluru, India}\\
+  Delivered front-line customer engagement, technical advisory, and commercial sales across premium consumer electronics (smartphones, computing hardware, audio engineering systems, and smart-home IoT devices). Explained warranty terms, hardware specifications, and post-sales technical support.
+\end{projectcard}
+
+\begin{projectcard}
+  \textbf{\large University Leadership, Community Volunteering \& Creative Portfolios} \hfill \statuscompleted\\[2pt]
+  \begin{itemize}[leftmargin=14pt, itemsep=1.5pt, topsep=1pt]
+    \item \textbf{AUSA / YouX Crew Volunteer:} University of Adelaide student community volunteer. Managed logistics, uniform-replacement pop-ups, and student campus engagement programs.
+    \item \textbf{FORCE Club Event Photographer:} Lead photographer documenting large-scale university events, workshops, and student festivals in dynamic, fast-paced environments.
+    \item \textbf{Online Creative Portfolio:} Published professional UI/UX and product design cases on \href{https://www.behance.net/gallery/184968613/my-UIUX-portfolio}{\underline{Behance Portfolio Profile}}.
+  \end{itemize}
+\end{projectcard}
+
+\newpage
+
+% ==========================================
+% SECTION 15: RESUME POSITIONING & GUARDRAILS
+% ==========================================
+\section{Best Resume Positioning and Strategic Guardrails}
+
+\subsection{15.1 Five Core Career Positioning Profiles}
+\noindent
+\begin{minipage}[t]{0.485\textwidth}
+\begin{tcolorbox}[enhanced, colback=progressbg!30!white, colframe=progress!40!white, arc=3pt, boxrule=0.5pt, top=5pt, bottom=5pt, left=6pt, right=6pt]
+  \textbf{\color{progress}1. Applied AI/ML Researcher}\\[2pt]
+  {\scriptsize Clicky (Apple MLX / Qwen2-VL), Lettuce Biomass, Accent Speech, RLHF (PPO vs DPO), VAEs, Diabetes Screening, Blood-Cell ResNet.}
+\end{tcolorbox}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.485\textwidth}
+\begin{tcolorbox}[enhanced, colback=completedbg!30!white, colframe=completed!40!white, arc=3pt, boxrule=0.5pt, top=5pt, bottom=5pt, left=6pt, right=6pt]
+  \textbf{\color{completed}2. Computer Vision \& Multimodal Engineer}\\[2pt]
+  {\scriptsize Qwen2-VL Desktop Grounding, Image Deblurring \& YOLOv8, RGB-D Segmentation, CLIP Zero-Shot \& Adapters, FER2013, Motion Tracking.}
+\end{tcolorbox}
+\end{minipage}
+
+\vspace{4pt}\noindent
+\begin{minipage}[t]{0.485\textwidth}
+\begin{tcolorbox}[enhanced, colback=conceptbg!30!white, colframe=concept!40!white, arc=3pt, boxrule=0.5pt, top=5pt, bottom=5pt, left=6pt, right=6pt]
+  \textbf{\color{concept}3. Systems, Robotics \& Desktop Engineering}\\[2pt]
+  {\scriptsize Clicky macOS Agent Mode, Roolie Self-Balancing Robot, ROS / FastAPI, RealSense RGB-D, Techtopia Game Engine, NotchBox SwiftUI.}
+\end{tcolorbox}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.485\textwidth}
+\begin{tcolorbox}[enhanced, colback=prototypebg!30!white, colframe=prototype!40!white, arc=3pt, boxrule=0.5pt, top=5pt, bottom=5pt, left=6pt, right=6pt]
+  \textbf{\color{prototype}4. Full-Stack, Web3 \& Production Developer}\\[2pt]
+  {\scriptsize WhatsApp Web Archive (Live), Secret Password Generator (Chrome Store), Blockchain NFT Marketplace, Sisic Music Engine.}
+\end{tcolorbox}
+\end{minipage}
+
+\vspace{4pt}\noindent
+\begin{tcolorbox}[enhanced, colback=lightbg, colframe=cardborder, arc=3pt, boxrule=0.5pt, top=5pt, bottom=5pt, left=6pt, right=6pt]
+  \textbf{\color{primary}5. Cybersecurity \& Responsible AI Analyst}\\[2pt]
+  {\scriptsize PBKDF2 Stateless Cryptographic KDF, Log4Shell Incident Post-Mortem, AgeWell Healthcare Risk Assessment, Wazuh/Splunk SIEM, NIST AI Governance.}
+\end{tcolorbox}
+
+\subsection{15.2 Recommended Project Selection for a 1-Page Technical Resume}
+\begin{tcolorbox}[enhanced, colback=lightbg, colframe=cardborder, boxrule=0.5pt, arc=3pt, left=8pt, right=8pt, top=5pt, bottom=5pt]
+  \begin{enumerate}[leftmargin=14pt, itemsep=1.5pt, topsep=1pt]
+    \item \textbf{Clicky for macOS (Apple MLX Edition):} On-device vision-language model (Qwen2-VL 4-bit) running Metal GPU inference (80+ tok/s), faster-whisper STT, PyQt6 canvas overlay, and autonomous system agent.
+    \item \textbf{RGB-D Lettuce Biomass Estimation:} DeepLabV3+ ResNet34, depth restoration, 3D geometry, ensemble regression (Validation IoU: 0.982).
+    \item \textbf{Accent-Adaptive Speech Pipeline:} wav2vec2 self-supervised fine-tuning, accent adapter, SpeechT5 HiFi-GAN synthesis.
+    \item \textbf{WhatsApp Web Export Viewer \& Clone (Live):} Client-side React 18, TypeScript, streaming JSZip, IndexedDB, and in-browser Opus playback.
+    \item \textbf{Secret Password Generator (Chrome Web Store \& iOS):} Stateless PBKDF2-HMAC-SHA256 (600k iterations), zero cloud, shoulder-surfing crying-cat mask, native iOS SwiftUI app.
+    \item \textbf{RLHF Alignment Comparison (PPO vs DPO):} Full 3-stage pipeline, reward modeling, KL penalties, reward hacking analysis.
+    \item \textbf{Image Deblurring \& YOLOv8 Detection:} NAFNet vs Richardson-Lucy restoration (+3.86 dB PSNR), degraded mAP evaluation.
+    \item \textbf{Decentralized NFT Marketplace \& AI Search:} Solidity, Hardhat, Sepolia, React, IPFS, multimodal visual \& NLP search.
+    \item \textbf{Roolie Self-Balancing Social Robot:} PID closed-loop balancing, Raspberry Pi Zero W, ESP32-CAM, OpenCV tracking.
+  \end{enumerate}
+\end{tcolorbox}
+
+\subsection{15.3 Mandatory Resume \& Interview Integrity Guardrails ("What NOT to Claim")}
+\begin{guardrailbox}
+  {\footnotesize\bfseries\color{danger}\faIcon{exclamation-triangle}\ Strict Evidentiary Guardrails}\\[3pt]
+  \begin{tabularx}{\textwidth}{@{}XX@{}}
+    \toprule
+    \textbf{\color{danger}Do NOT Claim (Overstatement Risk)} & \textbf{\color{completed}Accurate \& Defensible Framing} \\
+    \midrule
+    {\scriptsize\color{danger}\faIcon{times}\ Physical field installation or utility deployment for SA Water} & {\scriptsize\color{completed}\faIcon{check}\ Literature-led research, sensor analysis, mathematical framework} \\
+    {\scriptsize\color{danger}\faIcon{times}\ Clinical or hospital deployment for Diabetes MLP / FER2013} & {\scriptsize\color{completed}\faIcon{check}\ Coursework research models evaluated on benchmark datasets with ethics} \\
+    {\scriptsize\color{danger}\faIcon{times}\ A granted commercial patent for the NFT search engine} & {\scriptsize\color{completed}\faIcon{check}\ Academic research paper and formal patent-style draft specification} \\
+    {\scriptsize\color{danger}\faIcon{times}\ Formal large-scale human listening study for Accent Speech} & {\scriptsize\color{completed}\faIcon{check}\ Qualitative listening evaluation alongside silhouette score / NMI} \\
+    {\scriptsize\color{danger}\faIcon{times}\ Completed LJSpeech TTS model or validated CosyVoice 2} & {\scriptsize\color{completed}\faIcon{check}\ Audio preprocessing pipeline (LJSpeech) and experimental static code} \\
+    {\scriptsize\color{danger}\faIcon{times}\ Deployed production transit hub installation for SMARTGUARD} & {\scriptsize\color{completed}\faIcon{check}\ Co-designed architectural surveillance concept and engineering spec} \\
+    {\scriptsize\color{danger}\faIcon{times}\ Proprietary ownership of commercial robots at Vistan} & {\scriptsize\color{completed}\faIcon{check}\ Data Science/AI/ML contributor and technical product-pitch intern} \\
+    {\scriptsize\color{danger}\faIcon{times}\ External research papers authored by other student teams} & {\scriptsize\color{completed}\faIcon{check}\ Only work where personal co-authorship and engineering exists} \\
+    {\scriptsize\color{danger}\faIcon{times}\ Private personal, family property, or medical records} & {\scriptsize\color{completed}\faIcon{check}\ Strictly focused on professional engineering and academic deliverables} \\
+    \bottomrule
+  \end{tabularx}
+\end{guardrailbox}
+
+\begin{tcolorbox}[enhanced, colback=lightbg, colframe=cardborder, boxrule=0.4pt, arc=3pt, left=8pt, right=8pt, top=4pt, bottom=4pt]
+  {\scriptsize\textbf{\color{primary}Archival Evidence \& Export Backups:}
+  Verified against primary repositories and verified chat archive logs:
+  \texttt{ChatGPT Data Export-1-500.pdf, 501-1000.pdf, 1001-1500.pdf, 1501-1932.pdf, Export1.pdf, Export3.pdf, Export4.pdf, Export5-1-500.pdf, 501-1000.pdf, 1001-1500.pdf, 1501-2000.pdf, 2001-2683.pdf}.}
+\end{tcolorbox}
+
+\end{document}

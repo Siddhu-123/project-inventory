@@ -1,0 +1,1874 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Master Project and Skills Inventory — Satya Siddhartha Balanagu</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+  @page {
+    size: A4;
+    margin: 12mm 14mm 12mm 14mm;
+  }
+
+  * {
+    box-sizing: border-box;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    color: #1e293b;
+    background-color: #ffffff;
+    line-height: 1.45;
+    font-size: 8.8pt;
+    margin: 0;
+    padding: 0;
+  }
+
+  a {
+    color: #2563eb;
+    text-decoration: none;
+    word-break: break-all;
+  }
+
+  a:hover {
+    text-decoration: underline;
+  }
+
+  /* Cover / Title Block */
+  .cover-banner {
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 55%, #1e3a8a 100%);
+    color: #ffffff;
+    padding: 24px 28px;
+    border-radius: 10px;
+    margin-bottom: 16px;
+    box-shadow: 0 4px 14px rgba(15, 23, 42, 0.12);
+  }
+
+  .cover-kicker {
+    display: inline-block;
+    font-size: 7.5pt;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    background: rgba(255, 255, 255, 0.15);
+    color: #93c5fd;
+    padding: 3px 10px;
+    border-radius: 20px;
+    margin-bottom: 10px;
+  }
+
+  .cover-title {
+    font-size: 22pt;
+    font-weight: 800;
+    line-height: 1.15;
+    margin: 0 0 6px 0;
+    letter-spacing: -0.5px;
+    color: #ffffff;
+  }
+
+  .cover-subtitle {
+    font-size: 10pt;
+    color: #cbd5e1;
+    margin: 0 0 16px 0;
+    font-weight: 400;
+    line-height: 1.45;
+  }
+
+  .cover-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    font-size: 8.5pt;
+    padding-top: 12px;
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+  }
+
+  .cover-meta-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .cover-meta-item strong {
+    color: #93c5fd;
+    font-weight: 600;
+  }
+
+  /* Overview & Metrics Grid */
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    margin-bottom: 16px;
+  }
+
+  .stat-card {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 10px 12px;
+    text-align: center;
+  }
+
+  .stat-val {
+    font-size: 16pt;
+    font-weight: 800;
+    color: #1e3a8a;
+    line-height: 1.1;
+  }
+
+  .stat-lbl {
+    font-size: 7.5pt;
+    font-weight: 600;
+    color: #64748b;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-top: 3px;
+  }
+
+  /* Status Badges */
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 2px 7px;
+    border-radius: 4px;
+    font-size: 7.2pt;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+    white-space: nowrap;
+  }
+
+  .badge-completed {
+    background: #dcfce7;
+    color: #15803d;
+    border: 1px solid #bbf7d0;
+  }
+
+  .badge-progress {
+    background: #e0f2fe;
+    color: #0369a1;
+    border: 1px solid #bae6fd;
+  }
+
+  .badge-prototype {
+    background: #fef3c7;
+    color: #b45309;
+    border: 1px solid #fde68a;
+  }
+
+  .badge-concept {
+    background: #f3e8ff;
+    color: #7e22ce;
+    border: 1px solid #e9d5ff;
+  }
+
+  /* Status Taxonomy Table */
+  .taxonomy-box {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin-bottom: 16px;
+  }
+
+  .taxonomy-title {
+    font-size: 8.5pt;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    color: #334155;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .taxonomy-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px 14px;
+    font-size: 8pt;
+  }
+
+  .taxonomy-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  /* Section Navigation Table of Contents */
+  .toc-box {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 12px 16px;
+  }
+
+  .toc-title {
+    font-size: 8.5pt;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    color: #334155;
+    margin-bottom: 8px;
+    border-bottom: 1px solid #e2e8f0;
+    padding-bottom: 4px;
+  }
+
+  .toc-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 4px 12px;
+    font-size: 7.8pt;
+  }
+
+  .toc-item {
+    color: #475569;
+  }
+
+  .toc-item strong {
+    color: #1e3a8a;
+  }
+
+  /* Section Headers */
+  h2.section-heading {
+    font-size: 12pt;
+    font-weight: 800;
+    color: #0f172a;
+    border-bottom: 2px solid #2563eb;
+    padding-bottom: 4px;
+    margin-top: 14px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    page-break-after: avoid;
+    break-after: avoid;
+  }
+
+  h2.section-heading .section-num {
+    color: #2563eb;
+    font-weight: 900;
+    margin-right: 6px;
+  }
+
+  h3.sub-heading {
+    font-size: 10pt;
+    font-weight: 700;
+    color: #1e293b;
+    margin-top: 12px;
+    margin-bottom: 6px;
+    page-break-after: avoid;
+    break-after: avoid;
+  }
+
+  /* Project Cards */
+  .project-card {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 9px 13px;
+    margin-bottom: 10px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+
+  .project-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 4px;
+    gap: 8px;
+  }
+
+  .project-title {
+    font-size: 10.2pt;
+    font-weight: 700;
+    color: #0f172a;
+    margin: 0;
+  }
+
+  .project-title span.p-num {
+    color: #2563eb;
+    margin-right: 4px;
+  }
+
+  .evidence-bar {
+    font-size: 7.8pt;
+    background: #f1f5f9;
+    border-radius: 4px;
+    padding: 2.5px 7px;
+    margin-bottom: 6px;
+    display: inline-block;
+    color: #475569;
+  }
+
+  .evidence-bar strong {
+    color: #0f172a;
+  }
+
+  .project-bullets {
+    margin: 3px 0 5px 0;
+    padding-left: 16px;
+    font-size: 8.2pt;
+    color: #334155;
+    line-height: 1.38;
+  }
+
+  .project-bullets li {
+    margin-bottom: 2px;
+  }
+
+  /* Metrics Callout Box */
+  .metrics-box {
+    background: #f0fdf4;
+    border: 1px solid #bbf7d0;
+    border-radius: 5px;
+    padding: 3.5px 8px;
+    margin: 4px 0;
+    font-size: 7.8pt;
+    color: #166534;
+    display: flex;
+    align-items: flex-start;
+    gap: 6px;
+  }
+
+  .metrics-box.warning {
+    background: #fffbeb;
+    border-color: #fde68a;
+    color: #92400e;
+  }
+
+  .metrics-box-icon {
+    font-weight: 800;
+    color: #15803d;
+    white-space: nowrap;
+  }
+
+  .metrics-box.warning .metrics-box-icon {
+    color: #b45309;
+  }
+
+  /* Resume Bullet Highlight */
+  .resume-bullet-box {
+    background: #f8fafc;
+    border-left: 3px solid #2563eb;
+    padding: 4.5px 9px;
+    margin-top: 5px;
+    border-radius: 0 5px 5px 0;
+    font-size: 7.9pt;
+    color: #1e293b;
+    line-height: 1.35;
+  }
+
+  .resume-bullet-label {
+    font-size: 6.8pt;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: #2563eb;
+    margin-bottom: 1px;
+  }
+
+  /* Coursework & Sub-cards */
+  .coursework-card {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 6px;
+    padding: 8px 12px;
+    margin-bottom: 8px;
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+
+  .coursework-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 3px;
+  }
+
+  .coursework-title {
+    font-size: 9.2pt;
+    font-weight: 700;
+    color: #0f172a;
+    margin: 0;
+  }
+
+  /* Skills Matrix */
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+    margin-bottom: 10px;
+  }
+
+  .skill-category-card {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 6px;
+    padding: 8px 10px;
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+
+  .skill-cat-header {
+    font-size: 8.2pt;
+    font-weight: 700;
+    color: #1e3a8a;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 5px;
+    border-bottom: 1px solid #e2e8f0;
+    padding-bottom: 3px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+
+  .tag-cloud {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3.5px;
+  }
+
+  .skill-tag {
+    background: #f1f5f9;
+    color: #334155;
+    border: 1px solid #cbd5e1;
+    border-radius: 3px;
+    padding: 1px 5px;
+    font-size: 7.4pt;
+    font-weight: 500;
+  }
+
+  .skill-tag.accent {
+    background: #eff6ff;
+    color: #1d4ed8;
+    border-color: #bfdbfe;
+    font-weight: 600;
+  }
+
+  /* Guardrails Table & Alert Box */
+  .guardrail-alert {
+    background: #fff1f2;
+    border: 1px solid #fecdd3;
+    border-left: 4px solid #e11d48;
+    border-radius: 6px;
+    padding: 10px 12px;
+    margin-top: 8px;
+    margin-bottom: 10px;
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+
+  .guardrail-alert-title {
+    font-size: 9pt;
+    font-weight: 700;
+    color: #be123c;
+    margin-bottom: 5px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+
+  .guardrail-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 7.8pt;
+    margin-top: 5px;
+  }
+
+  .guardrail-table th, .guardrail-table td {
+    padding: 4px 7px;
+    border: 1px solid #fda4af;
+    text-align: left;
+    line-height: 1.32;
+  }
+
+  .guardrail-table th {
+    background: #ffe4e6;
+    color: #9f1239;
+    font-weight: 700;
+  }
+
+  .guardrail-table td {
+    background: #ffffff;
+    color: #334155;
+  }
+
+  .guardrail-table td.dont {
+    color: #be123c;
+    font-weight: 600;
+  }
+
+  .guardrail-table td.do {
+    color: #15803d;
+    font-weight: 600;
+  }
+
+  /* General Table */
+  table.content-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 8pt;
+    margin: 6px 0;
+  }
+
+  table.content-table th, table.content-table td {
+    padding: 5px 8px;
+    border: 1px solid #e2e8f0;
+    line-height: 1.35;
+  }
+
+  table.content-table th {
+    background: #f8fafc;
+    color: #0f172a;
+    font-weight: 700;
+    text-align: left;
+  }
+
+  /* Page break utility */
+  .page-break {
+    page-break-before: always;
+    break-before: page;
+  }
+
+  .code-font {
+    font-family: 'JetBrains Mono', Consolas, monospace;
+    font-size: 7.5pt;
+  }
+</style>
+</head>
+<body>
+
+<!-- PAGE 1: EXECUTIVE COVER & AUDIT INDEX -->
+<div class="cover-banner">
+  <div class="cover-kicker">Technical Dossier & Portfolio Audit</div>
+  <h1 class="cover-title">Master Project and Skills Inventory</h1>
+  <div class="cover-subtitle">A comprehensive, evidence-backed engineering record spanning AI/ML Research, Computer Vision, Speech Processing, Robotics, Web3, Cybersecurity, Data Science, Full-Stack Development, UI/UX, Project Management, and Responsible AI.</div>
+  
+  <div class="cover-meta">
+    <div class="cover-meta-item"><strong>Candidate / Engineer:</strong> Satya Siddhartha Balanagu</div>
+    <div class="cover-meta-item"><strong>Portfolio Scope:</strong> 15 Interdisciplinary Domains</div>
+    <div class="cover-meta-item"><strong>Evidentiary Audit:</strong> 100% Primary Evidence Backed</div>
+    <div class="cover-meta-item"><strong>Date of Record:</strong> September 2026</div>
+  </div>
+</div>
+
+<!-- Key Stats Grid -->
+<div class="stats-grid">
+  <div class="stat-card">
+    <div class="stat-val">12</div>
+    <div class="stat-lbl">Flagship Projects</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-val">30+</div>
+    <div class="stat-lbl">Validated Deliverables</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-val">14</div>
+    <div class="stat-lbl">Technical Skill Areas</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-val">5</div>
+    <div class="stat-lbl">Resume Profiles</div>
+  </div>
+</div>
+
+<!-- Status Taxonomy Guide -->
+<div class="taxonomy-box">
+  <div class="taxonomy-title">📋 Evidentiary Status Classification Guide</div>
+  <div class="taxonomy-grid">
+    <div class="taxonomy-item">
+      <span class="badge badge-completed">Completed / Substantial</span>
+      <span>Report, code, notebook, formal presentation, or verified benchmark exists.</span>
+    </div>
+    <div class="taxonomy-item">
+      <span class="badge badge-progress">In Progress</span>
+      <span>Rigorous research, scoping, or architectural implementation exists; active development.</span>
+    </div>
+    <div class="taxonomy-item">
+      <span class="badge badge-prototype">Prototype / Partial</span>
+      <span>Working design, software module, or partial pipeline exists; validation incomplete.</span>
+    </div>
+    <div class="taxonomy-item">
+      <span class="badge badge-concept">Concept / Research</span>
+      <span>Ideation, literature review, or system architecture exists without completed deployment.</span>
+    </div>
+  </div>
+</div>
+
+<!-- Table of Contents / Executive Navigation -->
+<div class="toc-box">
+  <div class="toc-title">📑 Comprehensive Section Index</div>
+  <div class="toc-grid">
+    <div class="toc-item"><strong>1.</strong> Strongest Resume Projects (12)</div>
+    <div class="toc-item"><strong>6.</strong> Robotics, Embedded & IoT</div>
+    <div class="toc-item"><strong>11.</strong> Design-Thinking & Surveys</div>
+    <div class="toc-item"><strong>2.</strong> Complete AIML Coursework</div>
+    <div class="toc-item"><strong>7.</strong> UI/UX, Web & Apps</div>
+    <div class="toc-item"><strong>12.</strong> Unfinished & Conceptual Audit</div>
+    <div class="toc-item"><strong>3.</strong> Data Science & Statistics</div>
+    <div class="toc-item"><strong>8.</strong> Project Management Work</div>
+    <div class="toc-item"><strong>13.</strong> Technical Skills Matrix</div>
+    <div class="toc-item"><strong>4.</strong> CS & Algorithms Portfolio</div>
+    <div class="toc-item"><strong>9.</strong> Ethics & Responsible AI</div>
+    <div class="toc-item"><strong>14.</strong> Experience & Internships</div>
+    <div class="toc-item"><strong>5.</strong> Cybersecurity Labs & SOC</div>
+    <div class="toc-item"><strong>10.</strong> Android & Quantum Work</div>
+    <div class="toc-item"><strong>15.</strong> Resume Positioning & Guardrails</div>
+  </div>
+</div>
+
+<!-- ========================================== -->
+<!-- PAGE 2: SECTION 1 (Projects 1.1 & 1.2)     -->
+<!-- ========================================== -->
+<div class="page-break"></div>
+<h2 class="section-heading"><span class="section-num">1.</span> Strongest Resume Projects (12 Flagship Initiatives)</h2>
+
+<!-- Project 1.1 -->
+<div class="project-card">
+  <div class="project-header">
+    <h3 class="project-title"><span class="p-num">1.1</span> RGB-D Plant Segmentation and Lettuce Biomass Estimation</h3>
+    <span class="badge badge-completed">Completed / Substantial</span>
+  </div>
+  <div class="evidence-bar">
+    <strong>Evidence:</strong> <span>RGB-D Based Plant Segmentation Using DeepLabV3+ report (Report.pdf)</span>
+  </div>
+  <ul class="project-bullets">
+    <li>Engineered an end-to-end non-destructive plant-phenotyping pipeline to estimate lettuce dry-shoot biomass from RGB-D imagery.</li>
+    <li>Restored raw sensor depth maps via Region-of-Interest (ROI) cropping, OpenCV inpainting, bilateral filtering, and depth-range thresholding.</li>
+    <li>Implemented DeepLabV3+ with a ResNet34 backbone and Atrous Spatial Pyramid Pooling (ASPP) for high-precision plant canopy segmentation.</li>
+    <li>Optimized network using Tversky loss (weighting false negatives), spatial data augmentations, early stopping, and IoU/F1 metric tracking.</li>
+    <li>Extracted 39 handcrafted RGB, depth, geometric, 3D voxel volume, convex hull, vegetation indices (ExG, NDVI equivalents), and morphological shape features.</li>
+    <li>Trained and benchmarked regression models: LightGBM, Gradient Boosting, Huber regression, staged prediction, cross-validation, and ensemble voting.</li>
+    <li>Built cross-platform workflows supporting RGB, depth, masks, CSV metadata, Apple Silicon MPS acceleration, and CPU fallback.</li>
+  </ul>
+  <div class="metrics-box">
+    <span class="metrics-box-icon">📊 Empirical Results:</span>
+    <span>Validation <strong>IoU: ~0.982</strong> | <strong>F1 Score: ~0.991</strong>. <em>(Separate competition runs record distinct MAE values; maintain separate splits on resumes).</em></span>
+  </div>
+  <div class="resume-bullet-box">
+    <div class="resume-bullet-label">Ready-to-Use Resume Bullet</div>
+    Built an RGB-D lettuce biomass-estimation pipeline using depth restoration, DeepLabV3+ segmentation, 3D plant geometry, vegetation indices, and ensemble regression.
+  </div>
+</div>
+
+<!-- Project 1.2 -->
+<div class="project-card">
+  <div class="project-header">
+    <h3 class="project-title"><span class="p-num">1.2</span> Accent-Adaptive Speech System</h3>
+    <span class="badge badge-completed">Completed Research Prototype</span>
+  </div>
+  <div class="evidence-bar">
+    <strong>Evidence:</strong> <span>Accent-Adaptive Speech System Report (accent_speech_report.pdf)</span>
+  </div>
+  <ul class="project-bullets">
+    <li>Curated and processed Mozilla Common Voice English data spanning 13 distinct global accent groups.</li>
+    <li>Built an audio engineering pipeline: SNR filtering, duration filtering, long recording segmentation, 16 kHz mono resampling, and amplitude normalization.</li>
+    <li>Applied acoustic data augmentations including Gaussian noise injection, pitch shifting, and silence insertion.</li>
+    <li>Analyzed prosody and phonetic features: MFCCs, fundamental frequency (F0/pitch), RMS energy, spectral centroids, PCA, and t-SNE clustering.</li>
+    <li>Fine-tuned Facebook's wav2vec2-base via self-supervised masked frame prediction and contrastive InfoNCE loss.</li>
+    <li>Trained a 768-to-512-dimensional bottleneck accent adapter network using Mean Squared Error (MSE) loss.</li>
+    <li>Integrated SpeechT5 and SpeechT5 HiFi-GAN neural vocoder for accent-conditioned speech synthesis.</li>
+    <li>Engineered robust Kaggle NVIDIA P100 training scripts featuring checkpoint rotation, resume capabilities, deterministic seeds, and device detection.</li>
+    <li>Synthesized speech across all 13 accent profiles and conducted a qualitative listening evaluation.</li>
+  </ul>
+  <div class="metrics-box">
+    <span class="metrics-box-icon">📊 Empirical Results:</span>
+    <span>Accent cluster separation achieved a <strong>Silhouette Score: ~0.22</strong> and <strong>Normalized Mutual Information (NMI): ~0.34</strong>.</span>
+  </div>
+  <div class="resume-bullet-box">
+    <div class="resume-bullet-label">Ready-to-Use Resume Bullet</div>
+    Developed an accent-adaptive speech pipeline using wav2vec2 embeddings, prosody features, adapter training, SpeechT5 synthesis, and accent-conditioned evaluation.
+  </div>
+</div>
+
+<!-- ========================================== -->
+<!-- PAGE 3: SECTION 1 (Projects 1.3 & 1.4)     -->
+<!-- ========================================== -->
+<div class="page-break"></div>
+
+<!-- Project 1.3 -->
+<div class="project-card">
+  <div class="project-header">
+    <h3 class="project-title"><span class="p-num">1.3</span> RLHF Alignment Comparison: PPO versus DPO</h3>
+    <span class="badge badge-completed">Completed Implementation & Research</span>
+  </div>
+  <div class="evidence-bar">
+    <strong>Evidence:</strong> <span>RLHF Final Report (Final_report.pdf)</span>
+  </div>
+  <ul class="project-bullets">
+    <li>Architected a full 3-stage Reinforcement Learning from Human Feedback (RLHF) pipeline: Supervised Fine-Tuning (SFT), Reward Modeling (RM), and Policy Optimization.</li>
+    <li>Conducted a head-to-head empirical comparison of Proximal Policy Optimization (PPO) versus Direct Preference Optimization (DPO) on GPT-2 and GPT-2-Medium.</li>
+    <li>Utilized Stanford SST-2 sentiment and UltraFeedback pairwise preference datasets.</li>
+    <li>Engineered reward models featuring linear scalar heads and partially frozen transformer layers, trained via binary cross-entropy with warmup and cosine learning-rate schedules.</li>
+    <li>Implemented PPO with Generalized Advantage Estimation (GAE), clipped surrogate policy objectives, dynamic KL-divergence penalties, and value heads.</li>
+    <li>Implemented DPO directly optimizing policy parameters from preference pairs without training a separate reward model.</li>
+    <li>Conducted local training on Apple Silicon Metal Performance Shaders (MPS).</li>
+    <li>Evaluated reward model accuracy, pairwise preference accuracy, language model perplexity degradation, reward hacking phenomena, and blind peer preference.</li>
+  </ul>
+  <div class="metrics-box">
+    <span class="metrics-box-icon">📊 Empirical Results:</span>
+    <span><strong>89.5%</strong> SST-2 reward model accuracy | <strong>76.6%</strong> UltraFeedback pairwise accuracy. Quantified PPO reward hacking via perplexity spikes; DPO preferred over SFT in blind evaluation.</span>
+  </div>
+  <div class="resume-bullet-box">
+    <div class="resume-bullet-label">Ready-to-Use Resume Bullet</div>
+    Implemented and compared PPO-based RLHF and DPO for GPT-2 models using SST-2 and UltraFeedback preference data, analysing reward modelling, KL control, perplexity, reward hacking, and human preference.
+  </div>
+</div>
+
+<!-- Project 1.4 -->
+<div class="project-card">
+  <div class="project-header">
+    <h3 class="project-title"><span class="p-num">1.4</span> Image Deblurring and Downstream Object Detection Under Degradation</h3>
+    <span class="badge badge-completed">Completed Computer Vision Project</span>
+  </div>
+  <div class="evidence-bar">
+    <strong>Evidence:</strong> <span>Computer Vision Assignment 1 Report (report.pdf)</span>
+  </div>
+  <ul class="project-bullets">
+    <li>Designed a reproducible restoration-to-detection benchmark comparing classical Richardson–Lucy deconvolution against learned NAFNet (Nonlinear Activation Free Network).</li>
+    <li>Trained and validated on GoPro sharp/blurred image pairs and synthetic motion blur models generated from COCO-2017.</li>
+    <li>Fine-tuned YOLOv8n specifically for degraded and restored imagery to quantify the downstream benefits of image restoration.</li>
+    <li>Benchmarked PSNR, SSIM, detection confidence distributions, bounding-box counts, blur severity gradients, mAP@0.5, and failure modes.</li>
+    <li>Utilized Apple Silicon MPS/CPU evaluation alongside cloud Kaggle Tesla T4 GPU training with fixed seeds and strict splits.</li>
+  </ul>
+  <div class="metrics-box">
+    <span class="metrics-box-icon">📊 Empirical Results:</span>
+    <span>NAFNet improved PSNR by <strong>+3.86 dB</strong>. YOLOv8n fine-tuning increased blurred mAP from <strong>0.256 to 0.383</strong>; post-deblurring mAP surged from <strong>0.373 to 0.520</strong>. Documented CPU latency tradeoffs.</span>
+  </div>
+  <div class="resume-bullet-box">
+    <div class="resume-bullet-label">Ready-to-Use Resume Bullet</div>
+    Built a reproducible deblurring-to-detection pipeline comparing Richardson–Lucy and NAFNet restoration with YOLOv8n under synthetic and real motion blur.
+  </div>
+</div>
+
+<!-- ========================================== -->
+<!-- PAGE 4: SECTION 1 (Projects 1.5 & 1.6)     -->
+<!-- ========================================== -->
+<div class="page-break"></div>
+
+<!-- Project 1.5 -->
+<div class="project-card">
+  <div class="project-header">
+    <h3 class="project-title"><span class="p-num">1.5</span> Blockchain NFT Marketplace and AI-Powered Multimodal Search</h3>
+    <span class="badge badge-completed">Completed Academic Product & Research</span>
+  </div>
+  <div class="evidence-bar">
+    <strong>Evidence:</strong> 
+    <span>Final Report</span> | 
+    <span>Conference Paper</span> | 
+    <span>AI Search Spec</span>
+  </div>
+  <ul class="project-bullets">
+    <li>Engineered a full-stack decentralized NFT marketplace web application connecting smart contracts with a modern frontend.</li>
+    <li>Built backend and smart contracts using Solidity, Hardhat, Ethereum Sepolia testnet, MetaMask wallet integration, Node.js, and IPFS/database storage.</li>
+    <li>Implemented core Web3 workflows: ERC-721 token minting, ownership verification, marketplace listings, escrow transactions, and balance management.</li>
+    <li>Developed an AI-driven search engine featuring Natural Language Processing (NLP) with part-of-speech (POS) tokenized search.</li>
+    <li>Researched and specified computer vision image retrieval using visual feature embeddings to detect duplicates and enable reverse-image NFT search.</li>
+    <li>Designed dark-themed UI/UX featuring product zoom, CSS micro-animations, gamification elements, and educational Web3 onboarding.</li>
+    <li>Authored a comprehensive conference paper and a formal patent-style draft specification for multimodal digital asset retrieval.</li>
+  </ul>
+  <div class="metrics-box warning">
+    <span class="metrics-box-icon">⚖️ Integrity Note:</span>
+    <span>Reference intellectual property contributions as a <strong>"patent specification / application draft"</strong> (do not claim granted status).</span>
+  </div>
+  <div class="resume-bullet-box">
+    <div class="resume-bullet-label">Ready-to-Use Resume Bullet</div>
+    Built and researched a blockchain NFT marketplace using React, Node.js, Solidity, Hardhat, Sepolia, MetaMask, NLP search, and image-based visual retrieval.
+  </div>
+</div>
+
+<!-- Project 1.6 -->
+<div class="project-card">
+  <div class="project-header">
+    <h3 class="project-title"><span class="p-num">1.6</span> Roolie: Two-Wheeled Self-Balancing Interactive Social Robot</h3>
+    <span class="badge badge-completed">Completed Robotics Prototype</span>
+  </div>
+  <div class="evidence-bar">
+    <strong>Evidence:</strong> 
+    <span>Project PPT</span> | 
+    <span>Robot Paper</span> | 
+    <span>Conference Paper</span>
+  </div>
+  <ul class="project-bullets">
+    <li>Designed and fabricated a two-wheeled self-balancing social robot combining inverted pendulum control with computer vision and voice interaction.</li>
+    <li>Hardware architecture: Raspberry Pi Zero W (companion computing), ESP32-CAM (video streaming), MPU6050 6-DOF IMU, high-torque DC gear motors, L298N driver, Li-ion battery regulation, servo neck, IR sensors, microphone, speaker, and LCD display.</li>
+    <li>Developed closed-loop Proportional-Integral-Derivative (PID) control firmware in Arduino C++ to maintain vertical stabilization under dynamic perturbations.</li>
+    <li>Implemented Raspberry Pi Python service executing OpenCV face and object tracking, real-time video streaming, and voice command processing.</li>
+    <li>Integrated Google Speech-to-Text, Google Search API, gTTS, and eSpeak to deliver conversational answers, weather forecasts, and home automation triggers.</li>
+    <li>Built mobile and web dashboard prototypes to stream live camera telemetry and control manual robot navigation.</li>
+    <li>Co-authored and published technical paper at the ICSTCEE conference.</li>
+  </ul>
+  <div class="resume-bullet-box">
+    <div class="resume-bullet-label">Ready-to-Use Resume Bullet</div>
+    Designed an interactive self-balancing robot combining PID control, Raspberry Pi, ESP32-CAM, MPU6050 sensing, voice interaction, camera streaming, and mobile/web control concepts.
+  </div>
+</div>
+
+<!-- ========================================== -->
+<!-- PAGE 5: SECTION 1 (Projects 1.7 & 1.8)     -->
+<!-- ========================================== -->
+<div class="page-break"></div>
+
+<!-- Project 1.7 -->
+<div class="project-card">
+  <div class="project-header">
+    <h3 class="project-title"><span class="p-num">1.7</span> SA Water Wastewater Sensor-Placement Optimization Capstone</h3>
+    <span class="badge badge-progress">In Progress / Substantial Scope Design</span>
+  </div>
+  <div class="evidence-bar">
+    <strong>Evidence:</strong> 
+    <span>Literature Report</span> | 
+    <span>Deep Research</span> | 
+    <span>Research Library</span>
+  </div>
+  <ul class="project-bullets">
+    <li>Investigating mathematical optimization of sensor modality, quantity, and spatial placement across municipal wastewater networks to proactively detect chokes, overflows, and blockages.</li>
+    <li>Conducted an extensive systematic literature review synthesizing 50+ peer-reviewed papers into an interactive, searchable digital library with metadata filters and summaries.</li>
+    <li>Formulated a comparative trade-off matrix covering 16+ sensor types: radar, ultrasonic, LiDAR, ToF, float, tilt, pulse, conductivity, temperature, pH, turbidity, UV/Vis, fluorescence, H₂S gas, acoustic, and CCTV.</li>
+    <li>Analyzed real-world operational constraints: wireless telemetry (LoRaWAN/cellular), battery lifecycle, biofilm fouling, sensor calibration drift, physical manhole access, hazardous maintenance, redundancy, and capital vs operational expenditure (CapEx/OpEx).</li>
+    <li>Formulated a mathematical sensor-placement optimization model on network graphs using binary decision variables, information entropy, mutual information, Fisher information matrices, source distinguishability, and detection latency.</li>
+    <li>Investigated combinatorial solvers: greedy submodular optimization, NSGA-II/III multi-objective genetic algorithms, network centrality heuristics, and Mixed-Integer Linear Programming (MILP).</li>
+    <li>Produced client presentations, project charters, Paper 1, and Paper 2.</li>
+  </ul>
+  <div class="metrics-box warning">
+    <span class="metrics-box-icon">⚖️ Integrity Note:</span>
+    <span>Work represents <strong>rigorous research, literature synthesis, and mathematical formulation</strong>. Do not claim physical field deployment or a validated utility network model.</span>
+  </div>
+  <div class="resume-bullet-box">
+    <div class="resume-bullet-label">Ready-to-Use Resume Bullet</div>
+    Conducted literature-led sensor-placement research for wastewater monitoring, synthesising sensor modalities, network topology, maintenance constraints, telemetry, lifecycle cost, and optimisation methods into a searchable evidence library and scoped mathematical framework.
+  </div>
+</div>
+
+<!-- Project 1.8 -->
+<div class="project-card">
+  <div class="project-header">
+    <h3 class="project-title"><span class="p-num">1.8</span> Sisic Music: Interactive Web Audio Platform</h3>
+    <span class="badge badge-prototype">Substantial Active Prototype</span>
+  </div>
+  <div class="evidence-bar">
+    <strong>Evidence:</strong> <span>Sisic Music Web Application</span>
+  </div>
+  <ul class="project-bullets">
+    <li>Architected an interactive music streaming web application built with React, Vite, and modern Web Audio APIs.</li>
+    <li>Engineered a custom studio-deck vinyl turntable interface featuring realistic vinyl scratching, tonearm tracking physics, drag-to-seek, rotational inertia, mechanical brake decay, RPM tempo adjustments, and custom keyboard sliders.</li>
+    <li>Integrated Dexie.js / IndexedDB client-side database, lazy loading, service workers for offline caching, and native Node test suites.</li>
+    <li>Built a headless media ingestion pipeline on macOS utilizing yt-dlp, FFmpeg audio transcoding, browser cookies, and metadata tagging.</li>
+    <li>Engineered robust title-matching regex algorithms to preserve authentic video titles while filtering out low-quality re-uploads and unrelated music videos.</li>
+    <li>Implemented dynamic artwork extraction, taste profile generation, audio embedding vectors, instant search, queue management, and automated browser smoke tests.</li>
+  </ul>
+  <div class="resume-bullet-box">
+    <div class="resume-bullet-label">Ready-to-Use Resume Bullet</div>
+    Developed a React music platform with an interactive vinyl turntable, expanded player, queue-backed media workflows, Google Drive integration, yt-dlp/FFmpeg processing, and browser-tested playback interactions.
+  </div>
+</div>
+
+<!-- ========================================== -->
+<!-- PAGE 6: SECTION 1 (Projects 1.9 & 1.10)    -->
+<!-- ========================================== -->
+<div class="page-break"></div>
+
+<!-- Project 1.9 -->
+<div class="project-card">
+  <div class="project-header">
+    <h3 class="project-title"><span class="p-num">1.9</span> Cybersecurity Incident Post-Mortem and Enterprise Risk Assessment</h3>
+    <span class="badge badge-completed">Completed Cybersecurity Work</span>
+  </div>
+  <div class="evidence-bar">
+    <strong>Evidence:</strong> 
+    <span>Log4Shell Report</span> | 
+    <span>AgeWell Risk Assessment</span>
+  </div>
+  <ul class="project-bullets">
+    <li><strong>Log4Shell Exploit Analysis (CVE-2021-44228):</strong> Authored an exhaustive technical dissection of the Apache Log4j JNDI/LDAP remote code execution (RCE) vulnerability. Documented exploit chains, affected assets, root causes, attacker attribution, detection signatures, WAF regex rules, outbound LDAP blocking, SOC playbooks, SBOMs, and defence-in-depth principles.</li>
+    <li><strong>AgeWell Innovations Risk Assessment:</strong> Conducted an enterprise security risk assessment for an AI-enabled aged-care digital transformation involving remote telemetry and unmanaged BYOD endpoints.</li>
+    <li>Constructed a formal 5x5 Likelihood vs. Impact risk matrix identifying 5 critical attack scenarios.</li>
+    <li>Designed mitigation architecture: Mobile Device Management (MDM), application containerization, Role-Based Access Control (RBAC), Multi-Factor Authentication (MFA), Privileged Access Management (PAM), AES-256 encryption at rest/transit, zero-trust VPNs, binary allowlisting, phishing simulation, and phased compliance governance.</li>
+    <li>Mapped controls to Australian Privacy Principles (APPs), Notifiable Data Breaches (NDB) scheme, ACSC Essential Eight, NIST Cybersecurity Framework, and ISO/IEC 27001.</li>
+  </ul>
+  <div class="resume-bullet-box">
+    <div class="resume-bullet-label">Ready-to-Use Resume Bullet</div>
+    Produced cybersecurity incident and risk assessments covering Log4Shell, AI-enabled aged-care systems, supply-chain risk, identity controls, encryption, endpoint management, monitoring, and governance.
+  </div>
+</div>
+
+<!-- Project 1.10 -->
+<div class="project-card">
+  <div class="project-header">
+    <h3 class="project-title"><span class="p-num">1.10</span> SMARTGUARD: Proactive Unattended-Object Detection Architecture</h3>
+    <span class="badge badge-concept">Concept / Design Study</span>
+  </div>
+  <div class="evidence-bar">
+    <strong>Evidence:</strong> <span>SMARTGUARD Major Project Report (MAJOR_PROJECT_REPORT2023.docx)</span>
+  </div>
+  <ul class="project-bullets">
+    <li>Co-designed a proactive automated surveillance system concept for detecting abandoned luggage and unattended objects in transport terminals and airports.</li>
+    <li>Formulated a vision pipeline combining adaptive background reference-frame differencing with Region-of-Interest (ROI) segmentation to isolate static items.</li>
+    <li>Designed integration with deep object detectors (YOLO, Faster R-CNN, SSD) paired with multi-object centroid tracking to compute unattended idle duration.</li>
+    <li>Defined tiered automated alert triggers based on stationary dwell time thresholds and security operator escalation pathways.</li>
+    <li>Produced system architecture specifications, requirements analysis, academic literature reviews, and engineering design posters.</li>
+  </ul>
+  <div class="metrics-box warning">
+    <span class="metrics-box-icon">⚖️ Integrity Note:</span>
+    <span>Frame as a <strong>co-designed architectural concept and technical specification</strong> (do not claim deployed production system).</span>
+  </div>
+  <div class="resume-bullet-box">
+    <div class="resume-bullet-label">Ready-to-Use Resume Bullet</div>
+    Co-designed a proactive surveillance concept for unattended-object detection using reference-frame comparison, ROI-based detection, object tracking, and time-based alerts.
+  </div>
+</div>
+
+<!-- ========================================== -->
+<!-- PAGE 7: SECTION 1 (Projects 1.11 & 1.12)   -->
+<!-- ========================================== -->
+<div class="page-break"></div>
+
+<!-- Project 1.11 -->
+<div class="project-card">
+  <div class="project-header">
+    <h3 class="project-title"><span class="p-num">1.11</span> SimplProcure: Managed Supply-Chain & Manufacturing Marketplace</h3>
+    <span class="badge badge-concept">Prelaunch Startup Concept</span>
+  </div>
+  <div class="evidence-bar">
+    <strong>Evidence:</strong> 
+    <span>SimplProcure Pitch Deck</span> | 
+    <span>Startup Insights Document</span>
+  </div>
+  <ul class="project-bullets">
+    <li>Formulated early product strategy, market research, and technical architecture for a B2B Manufacturing-as-a-Service (MaaS) and managed supply-chain marketplace.</li>
+    <li>Conducted market research across four key verticals: home décor, commercial construction, healthcare supplies, and educational institutions.</li>
+    <li>Architected platform modules: automated supplier discovery, demand aggregation algorithms, quality-assurance inspection workflows, multi-modal logistics routing, CAD design replication verification, managed procurement milestones, and trade finance/escrow.</li>
+    <li>Authored investment pitch decks, financial unit economics models, and customer validation interviews as founding technical lead.</li>
+  </ul>
+  <div class="resume-bullet-box">
+    <div class="resume-bullet-label">Ready-to-Use Resume Bullet</div>
+    Developed early product strategy and technical direction for SimplProcure, a managed supply-chain marketplace covering supplier discovery, quality assurance, logistics, manufacturing, and financing.
+  </div>
+</div>
+
+<!-- Project 1.12 -->
+<div class="project-card">
+  <div class="project-header">
+    <h3 class="project-title"><span class="p-num">1.12</span> Multilingual Family-Recipe Zine Workflow & Hosted Web Application</h3>
+    <span class="badge badge-prototype">Frontend Prototype & Editorial Workflow</span>
+  </div>
+  <div class="evidence-bar">
+    <strong>Evidence:</strong> 
+    <span>Workflow Spec</span> | 
+    <span>Recipe App Source</span>
+  </div>
+  <ul class="project-bullets">
+    <li>Designed a 3-page portrait digital and print culinary zine workflow focused on preserving regional Telugu and multilingual family culinary heritage.</li>
+    <li>Enforced strict cultural and culinary safeguards to preserve exact verbatim voice transcripts, prevents hallucinated ingredients, and protects authentic measurements.</li>
+    <li>Architected workflow pipeline: raw voice transcription, bilingual Telugu-to-English translation, culinary photo styling, hand-drawn step illustrations, process infographics, nutritional estimates, and cultural origin notes.</li>
+    <li>Built a responsive hosted web application using Next.js / Vinext featuring page-turn navigation, editorial typography, sample loading, and print-to-PDF export styling.</li>
+  </ul>
+  <div class="resume-bullet-box">
+    <div class="resume-bullet-label">Ready-to-Use Resume Bullet</div>
+    Designed and implemented a multilingual family-recipe zine workflow and hosted front-end prototype with exact-text preservation, bilingual output, page navigation, print export, and editorial visual design.
+  </div>
+</div>
+
+<!-- ========================================== -->
+<!-- PAGE 8: SECTION 2 (Coursework Part 1)      -->
+<!-- ========================================== -->
+<div class="page-break"></div>
+<h2 class="section-heading"><span class="section-num">2.</span> Complete Machine-Learning and AI Coursework Inventory</h2>
+
+<h3 class="sub-heading">2.1 Core AIML Assignments and Practical Work</h3>
+<p style="font-size: 8pt; color: #475569; margin-bottom: 6px;">
+  Evidenced by <span>AIML Notebooks Repository</span> and <span>TinyML Presentation</span>.
+</p>
+
+<div class="coursework-card">
+  <div class="coursework-card-header">
+    <div class="coursework-title">Linear Regression from Scratch</div>
+    <span class="badge badge-completed">Completed</span>
+  </div>
+  <div style="font-size: 8.2pt; color: #334155;">
+    Built pure NumPy linear regression model. Derived analytical gradients, implemented batch gradient descent, computed Mean Squared Error (MSE), plotted loss curves, and verified $R^2$ goodness-of-fit metrics against Matplotlib visual overlays.
+  </div>
+</div>
+
+<div class="coursework-card">
+  <div class="coursework-card-header">
+    <div class="coursework-title">Principal Component Analysis (PCA) & K-Means from Scratch</div>
+    <span class="badge badge-completed">Completed</span>
+  </div>
+  <div style="font-size: 8.2pt; color: #334155;">
+    Implemented PCA from first principles using covariance matrix eigenvalue decomposition; projected high-dimensional data (hundreds of features) onto 2 principal components. Built K-Means clustering from scratch with Euclidean distance centroid recomputation and convergence visualizations.
+  </div>
+</div>
+
+<div class="coursework-card">
+  <div class="coursework-card-header">
+    <div class="coursework-title">LightGBM Multiclass Classification</div>
+    <span class="badge badge-completed">Completed</span>
+  </div>
+  <div style="font-size: 8.2pt; color: #334155;">
+    Trained gradient-boosted decision trees for multiclass classification using stratified K-fold cross-validation. Evaluated log-loss, per-class accuracy, feature importance rankings, and detailed confusion matrices.
+  </div>
+</div>
+
+<div class="coursework-card">
+  <div class="coursework-card-header">
+    <div class="coursework-title">5-Class Flower Classification & Transfer Learning</div>
+    <span class="badge badge-completed">Completed</span>
+  </div>
+  <div style="font-size: 8.2pt; color: #334155;">
+    Developed custom deep CNNs with BatchNorm and L2 regularisation. Benchmarked against pre-trained VGG16, ResNet50, and Vision Transformer (ViT) architectures. Computed comprehensive classification reports and confusion matrices.
+  </div>
+</div>
+
+<div class="coursework-card">
+  <div class="coursework-card-header">
+    <div class="coursework-title">Cats-vs-Dogs Binary Classification</div>
+    <span class="badge badge-completed">Completed</span>
+  </div>
+  <div style="font-size: 8.2pt; color: #334155;">
+    Constructed PyTorch CNNs with dropout, real-time spatial data augmentation (rotation, flips, zoom), and early stopping to mitigate severe training overfitting.
+  </div>
+</div>
+
+<div class="coursework-card">
+  <div class="coursework-card-header">
+    <div class="coursework-title">Shakespeare Sonnet Autoregressive Generation</div>
+    <span class="badge badge-completed">Completed</span>
+  </div>
+  <div style="font-size: 8.2pt; color: #334155;">
+    Built sequential language models using character embeddings, LSTM, GRU, and Bidirectional RNN cells. Implemented temperature-controlled autoregressive sampling to generate coherent Shakespearean text.
+  </div>
+</div>
+
+<div class="coursework-card">
+  <div class="coursework-card-header">
+    <div class="coursework-title">TinyML Ultra-Low Power Audio Classification</div>
+    <span class="badge badge-completed">Completed</span>
+  </div>
+  <div style="font-size: 8.2pt; color: #334155;">
+    Designed a compact 1D/2D CNN for keyword spotting / audio classification on edge microcontrollers. Optimized model using TensorFlow Lite post-training integer quantization (INT8), achieving an ultra-compact footprint of <strong>13,700 parameters</strong> and <strong>53.5 KB</strong> binary size.
+  </div>
+</div>
+
+<!-- ========================================== -->
+<!-- PAGE 9: SECTION 2 (Coursework Part 2)      -->
+<!-- ========================================== -->
+<div class="page-break"></div>
+
+<h3 class="sub-heading">2.2 Deep Learning Laboratory Projects</h3>
+
+<div class="project-card">
+  <div class="project-header">
+    <h3 class="project-title">Butterfly Image Classifier (Small-Data Curation)</h3>
+    <span class="badge badge-completed">Completed</span>
+  </div>
+  <div class="evidence-bar"><strong>Evidence:</strong> <span>copy.ipynb</span></div>
+  <p style="font-size: 8.2pt; margin: 3px 0 4px 0; color: #334155;">
+    Curated a highly constrained small-scale image dataset. Filtered low-information, corrupted, and unreadable images using OpenCV Canny edge-density filtering. Retained 3 clean butterfly classes. Trained a compact PyTorch CNN with batch normalization, dropout, and spatial augmentations on Apple MPS. Benchmarked Adam vs SGD optimizers, achieving <strong>~96% validation accuracy</strong> and <strong>30/30 (100%)</strong> accuracy on a held-out test split.
+  </p>
+</div>
+
+<div class="project-card">
+  <div class="project-header">
+    <h3 class="project-title">Clinical Diabetes Screening with Multi-Layer Perceptrons</h3>
+    <span class="badge badge-completed">Completed</span>
+  </div>
+  <div class="evidence-bar"><strong>Evidence:</strong> <span>DLF Assignment 2 Report (assignment-2-deep.pdf)</span></div>
+  <p style="font-size: 8.2pt; margin: 3px 0 4px 0; color: #334155;">
+    Trained an MLP on the Pima Indians Diabetes dataset. Applied strict train-only median imputation and standardization to prevent data leakage. Engineered age bins, BMI-age interaction terms, and log-transformed insulin features. Benchmarked Small, Medium, and Wide architectures with BatchNorm, ReLU, Dropout, Kaiming initialization, and BCEWithLogitsLoss with positive class weighting to prioritize clinical recall over raw accuracy.
+  </p>
+  <div class="metrics-box">
+    <span class="metrics-box-icon">📊 Empirical Results:</span>
+    <span>Official Test <strong>Accuracy: 0.747</strong> | <strong>Recall: 0.862</strong> | <strong>F1 Score: 0.719</strong> | <strong>ROC-AUC: 0.851</strong>.</span>
+  </div>
+</div>
+
+<div class="project-card">
+  <div class="project-header">
+    <h3 class="project-title">Blood-Cell Image Classification (8 Classes)</h3>
+    <span class="badge badge-completed">Completed</span>
+  </div>
+  <div class="evidence-bar"><strong>Evidence:</strong> <span>Assignment 3 Report (Deep_Learning_assignment_3_report.pdf)</span></div>
+  <p style="font-size: 8.2pt; margin: 3px 0 4px 0; color: #334155;">
+    Built models to classify 8 distinct categories of blood cells. Audited the dataset to eliminate corrupted images, zero-variance frames, and perceptual-hash (pHash) near-duplicates. Applied CLAHE preprocessing. Constructed SimpleCNN, ImprovedCNN, and custom ResNet architectures from scratch. Benchmarked against HOG feature baselines with SVM and Logistic Regression. Tuned AdamW, cosine annealing schedules, label smoothing, and gradient clipping.
+  </p>
+  <div class="metrics-box">
+    <span class="metrics-box-icon">📊 Empirical Results:</span>
+    <span>Custom ResNet architecture achieved <strong>98.75% validation accuracy</strong>, heavily outperforming classical HOG baselines.</span>
+  </div>
+</div>
+
+<h3 class="sub-heading">2.3 Generative AI Projects, FER2013 & Multimodal Learning</h3>
+
+<div class="project-card">
+  <div class="project-header">
+    <h3 class="project-title">Convolutional Variational Autoencoder (VAE) on MNIST</h3>
+    <span class="badge badge-completed">Completed</span>
+  </div>
+  <div class="evidence-bar"><strong>Evidence:</strong> <span>A2 Notebook</span></div>
+  <p style="font-size: 8.2pt; margin: 3px 0 4px 0; color: #334155;">
+    Constructed a convolutional VAE in PyTorch. Implemented Gaussian reparameterization ($\mu + \sigma \odot \epsilon$) over a 16-dimensional latent space. Formulated loss using Binary Cross-Entropy reconstruction and KL divergence with monotonic/cyclical annealing. Utilized ConvTranspose2d, SiLU activations, and BatchNorm layers. Trained 20 epochs on Apple Silicon MPS. Visualized 2D spherical latent interpolations and generated crisp synthetic digit grids.
+  </p>
+</div>
+
+<div class="project-card">
+  <div class="project-header">
+    <h3 class="project-title">FER2013 Facial Emotion Classification & Ethics Analysis</h3>
+    <span class="badge badge-completed">Completed</span>
+  </div>
+  <div class="evidence-bar"><strong>Evidence:</strong> <span>FER2013 Report</span></div>
+  <p style="font-size: 8.2pt; margin: 3px 0 4px 0; color: #334155;">
+    Trained PyTorch MLPs and CNNs on 48x48 FER2013 facial data. Held out PublicTest and PrivateTest splits. Used data augmentation, cosine scheduling, and macro-F1 early stopping. Highlighted fundamental failure modes on minority classes: MLP reached ~0.37 accuracy, while CNN reached ~0.55 accuracy with macro-F1 around 0.43. Authored an ethical impact assessment documenting why facial emotion recognition should not be deployed in high-stakes human decision-making.
+  </p>
+</div>
+
+<div class="project-card">
+  <div class="project-header">
+    <h3 class="project-title">Multimodal Zero-Shot CLIP, Cross-Modal Adapters, and DCGAN</h3>
+    <span class="badge badge-completed">Completed</span>
+  </div>
+  <div class="evidence-bar"><strong>Evidence:</strong> <span>Assignment 2 Notebook (Assignment2.ipynb)</span></div>
+  <p style="font-size: 8.2pt; margin: 3px 0 4px 0; color: #334155;">
+    Benchmarked OpenAI CLIP ViT-B/16 and ViT-B/32 zero-shot classification on MNIST with prompt engineering and t-SNE embedding visualizations. Trained linear and residual MLP cross-modal adapters over frozen CLIP image/text embeddings for Flickr30k retrieval (evaluating bidirectional Recall@K). Built a Deep Convolutional GAN (DCGAN) on Fashion-MNIST with transposed convolutions and LeakyReLU.
+  </p>
+</div>
+
+<!-- ========================================== -->
+<!-- PAGE 10: SECTIONS 3, 4 & 5 (Stats, CS, Sec)-->
+<!-- ========================================== -->
+<div class="page-break"></div>
+<h2 class="section-heading"><span class="section-num">3.</span> Data Science and Statistics Projects</h2>
+
+<div class="project-card">
+  <div class="project-header">
+    <h3 class="project-title"><span class="p-num">3.1</span> Data Taming Assignment 1: Tidy Data & Non-Parametric Statistics</h3>
+    <span class="badge badge-completed">Completed</span>
+  </div>
+  <div class="evidence-bar"><strong>Evidence:</strong> <span>Quarto File</span></div>
+  <p style="font-size: 8.2pt; color: #334155; margin: 3px 0;">
+    Executed comprehensive data restructuring using R, tidyverse, and Quarto. Ingested messy international cricket batting records and converted from wide to long format. Extracted batting orders, runs, balls faced, teams, and player roles. Cleaned and structured board-game datasets. Constructed publication-quality ggplot2 visualizations including faceted histograms, boxplots, and scatter distributions. Applied non-parametric Wilcoxon rank-sum hypothesis testing to compare game performance distributions.
+  </p>
+</div>
+
+<div class="project-card">
+  <div class="project-header">
+    <h3 class="project-title"><span class="p-num">3.2</span> Data Taming Assignment 2: Log-Linear Regression & Market Modeling</h3>
+    <span class="badge badge-completed">Completed</span>
+  </div>
+  <div class="evidence-bar"><strong>Evidence:</strong> <span>Quarto File (Assignment 2 Data Taming New Student 2026.qmd)</span></div>
+  <p style="font-size: 8.2pt; color: #334155; margin: 3px 0;">
+    Analyzed market revenue dynamics across ~7,700 commercial board games. Compared raw and log-transformed revenue distributions. Built and evaluated ordinary least squares (OLS) linear and log-linear econometric models. Evaluated regression diagnostics (residual normality, heteroskedasticity, leverage points), computed prediction intervals, and interpreted economic rating coefficients for commercial strategy.
+  </p>
+</div>
+
+<div class="project-card">
+  <div class="project-header">
+    <h3 class="project-title"><span class="p-num">3.3</span> Data Taming Assignment 3: Tidymodels Machine Learning Pipeline</h3>
+    <span class="badge badge-progress">Execution-Ready Pipeline</span>
+  </div>
+  <p style="font-size: 8.2pt; color: #334155; margin: 3px 0;">
+    Constructed a full predictive pipeline in R using <code>tidymodels</code>. One-hot encoded game categories, defined high-rating binary targets, eliminated data-leakage variables, and enforced a stratified 75/25 train/test split. Formulated recipe workflows and hyperparameter grids for K-Nearest Neighbors (KNN) and Decision Tree classifiers with 5-fold cross-validation tracking accuracy and ROC-AUC.
+  </p>
+</div>
+
+<h2 class="section-heading"><span class="section-num">4.</span> Computer Science and Algorithms Portfolio</h2>
+
+<div class="project-card">
+  <div class="project-header">
+    <h3 class="project-title">Core Software Engineering & Algorithmic Implementations</h3>
+    <span class="badge badge-completed">Completed</span>
+  </div>
+  <table class="content-table">
+    <tr>
+      <th style="width: 25%;">Area</th>
+      <th>Demonstrated Implementations</th>
+    </tr>
+    <tr>
+      <td><strong>Object-Oriented Programming</strong></td>
+      <td>Encapsulation, inheritance hierarchies, composition, aggregation, polymorphic dispatch, clean class interfaces, robust error handling in Python.</td>
+    </tr>
+    <tr>
+      <td><strong>Data Structures</strong></td>
+      <td>Singly and doubly linked lists, LIFO stacks, FIFO queues, binary min/max heaps via <code>heapq</code>, Binary Search Trees (node insertion, deletion, range trimming, in-order/pre-order traversals, word frequency indexing).</td>
+    </tr>
+    <tr>
+      <td><strong>Sorting Algorithms</strong></td>
+      <td>Selection sort, Bubble sort, Insertion sort, Quick sort, Median-of-three pivot Quicksort, multi-key dictionary and string sorting.</td>
+    </tr>
+    <tr>
+      <td><strong>Searching Algorithms</strong></td>
+      <td>Linear search, weighted binary search, jump search, interpolation search, tolerance-based floating-point search.</td>
+    </tr>
+    <tr>
+      <td><strong>Graph Algorithms</strong></td>
+      <td>Adjacency list and matrix representations, Breadth-First Search (BFS), Depth-First Search (DFS), Dijkstra’s shortest-path algorithm using priority queues, RoadNetwork test harness, unreachable-node exception handling.</td>
+    </tr>
+    <tr>
+      <td><strong>Engineering Discipline</strong></td>
+      <td>Test-Driven Development (TDD), unit testing suites, structured JSON/CSV I/O, pandas/NumPy vectorization.</td>
+    </tr>
+  </table>
+</div>
+
+<h2 class="section-heading"><span class="section-num">5.</span> Cybersecurity Labs and Technical Exercises</h2>
+
+<div class="project-card">
+  <div class="project-header">
+    <h3 class="project-title">SOC, Threat Hunting & Vulnerability Analysis Lab Portfolio</h3>
+    <span class="badge badge-completed">Completed Hands-on Labs</span>
+  </div>
+  <ul class="project-bullets">
+    <li><strong>SIEM Operations & Threat Hunting:</strong> Forensic investigations using Sysmon and Splunk. Analyzed <code>rundll32.exe</code> execution paths, malicious Scheduled Tasks, correlated Sysmon Event ID 129 with Windows Security Event 4688, and detected obfuscated PowerShell commands.</li>
+    <li><strong>Host Intrusion Detection (HIDS):</strong> Deployed Wazuh server/agent infrastructure and OSSEC manager. Configured File Integrity Monitoring (FIM), custom rule IDs, and monitored SSH brute-force bursts.</li>
+    <li><strong>Network Reconnaissance:</strong> Authorized SNMP community string enumeration using Nmap and <code>snmp-brute</code> scripts in isolated virtual laboratories.</li>
+    <li><strong>Threat Intelligence & MITRE ATT&CK:</strong> Mapped real-world cyber incidents to MITRE ATT&CK techniques, including T1218.011 (Signed Binary Proxy Execution: Rundll32), Log4Shell (CVE-2021-44228), MOVEit Transfer SQLi (CVE-2023-34362), Storm-0978 RomCom malware, Heartbleed, Shellshock, Pass-the-Hash (PtH), Process Hollowing, and <code>Utilman.exe</code> privilege escalation backdoors.</li>
+    <li><strong>Security Frameworks:</strong> Designed risk registers, Likelihood/Impact matrices, and mitigation plans incorporating MDM, RBAC, MFA, PAM, zero-trust VPNs, AES-256 encryption, WAF rules, and SBOMs mapped to NIST CSF, Essential Eight, and ISO 27001.</li>
+  </ul>
+  <div class="resume-bullet-box">
+    <div class="resume-bullet-label">Ready-to-Use Resume Bullet</div>
+    Completed cybersecurity labs involving SIEM/EDR monitoring, Sysmon and Windows-event analysis, Wazuh/OSSEC deployment, MITRE ATT&CK mapping, vulnerability analysis, authorised network enumeration, and incident response.
+  </div>
+</div>
+
+<!-- ========================================== -->
+<!-- PAGE 11: SECTIONS 6, 7 & 8 (Robotics, UI, PM)-->
+<!-- ========================================== -->
+<div class="page-break"></div>
+<h2 class="section-heading"><span class="section-num">6.</span> Robotics, Embedded Systems, and IoT Work</h2>
+
+<div class="project-card">
+  <div class="project-header">
+    <h3 class="project-title"><span class="p-num">6.1</span> Early Bluetooth-Controlled Self-Balancing Robot</h3>
+    <span class="badge badge-completed">Completed Coursework Prototype</span>
+  </div>
+  <div class="evidence-bar"><strong>Evidence:</strong> <span>CBP_MC Phase 1 PPT</span></div>
+  <p style="font-size: 8.2pt; color: #334155; margin: 3px 0;">
+    Prototyped a two-wheeled balancing platform using Arduino Uno/Nano, MPU6050 accelerometer/gyroscope, HC-05 Bluetooth module, and DC gear motors. Developed closed-loop PID balancing firmware in the Arduino IDE to stabilize inverted pendulum dynamics while accepting directional commands via Bluetooth.
+  </p>
+</div>
+
+<div class="project-card">
+  <div class="project-header">
+    <h3 class="project-title"><span class="p-num">6.2</span> Robotics Middleware & Perception Prototypes</h3>
+    <span class="badge badge-prototype">Substantial Engineering Investigations</span>
+  </div>
+  <ul class="project-bullets">
+    <li><strong>ROS & TurtleBot3:</strong> Programmed ROS / <code>rospy</code> nodes to publish velocity commands and navigate TurtleBot3 mobile bases.</li>
+    <li><strong>FastAPI Robot Services:</strong> Built high-performance FastAPI endpoints receiving QR code JSON payloads to trigger immediate physical robot actions and audio announcements.</li>
+    <li><strong>Edge Compute & Vision:</strong> Integrated NVIDIA Jetson Xavier NX and Raspberry Pi 4 with Intel RealSense D435 RGB-D depth cameras, implementing depth-to-color alignment and real-time ONNX runtime object detection.</li>
+    <li><strong>Actuation & Control:</strong> Interfaced OpenCR microcontrollers over serial and controlled Dynamixel smart servos via the Dynamixel SDK, executing multi-threaded visual tracking and motor angle calculations.</li>
+    <li><strong>IoT Microcontrollers:</strong> Deployed ESP32-CAM video streaming servers over HTTP, interfaced Raspberry Pi GPIOs, and evaluated TensorFlow Lite inference latency on embedded ARM chips.</li>
+  </ul>
+</div>
+
+<h2 class="section-heading"><span class="section-num">7.</span> UI/UX, Web, and Application Projects</h2>
+
+<div class="project-card">
+  <div class="project-header">
+    <h3 class="project-title"><span class="p-num">7.1</span> Professional UI/UX Internship — Web Synergies</h3>
+    <span class="badge badge-completed">Verified Internship</span>
+  </div>
+  <div class="evidence-bar">
+    <strong>Evidence:</strong> <span>Web Synergies Experience Letter</span> | 
+    <a href="https://www.behance.net/gallery/184968613/my-UIUX-portfolio">Behance Portfolio</a>
+  </div>
+  <ul class="project-bullets">
+    <li>Worked as UI/UX Intern (Sept–Nov 2023) collaborating with cross-functional design and development teams.</li>
+    <li>Conducted user research, stakeholder interviews, user journey mapping, and persona synthesis.</li>
+    <li>Created wireframes, high-fidelity mockups, and interactive clickable prototypes using Figma.</li>
+    <li>Executed usability testing, cognitive walkthroughs, and iterated on user feedback loops.</li>
+    <li>Applied Design Thinking, WCAG accessibility standards, information architecture, microinteractions, and design systems.</li>
+  </ul>
+</div>
+
+<div class="project-card">
+  <div class="project-header">
+    <h3 class="project-title"><span class="p-num">7.2</span> Voice-Interactive English-Proficiency Application & React Experiments</h3>
+    <span class="badge badge-prototype">Prototypes & Modules</span>
+  </div>
+  <p style="font-size: 8.2pt; color: #334155; margin: 3px 0;">
+    Developed an interactive React application for English learning with Web Speech API voice-controlled quiz navigation, restart logic, and Ngrok tunnels. Engineered advanced modules: WebRTC microphone capture, Axios REST integration, touch drag-and-drop, Recharts dashboards, Intro.js product tours, Fuse.js fuzzy search, and media controls.
+  </p>
+</div>
+
+<h2 class="section-heading"><span class="section-num">8.</span> Project Management Work</h2>
+
+<div class="project-card">
+  <div class="project-header">
+    <h3 class="project-title"><span class="p-num">8.1</span> Apple AirPower Product Failure: PMBOK Case Study</h3>
+    <span class="badge badge-completed">Completed</span>
+  </div>
+  <div class="evidence-bar"><strong>Evidence:</strong> <span>PMF Assignment Report</span></div>
+  <p style="font-size: 8.2pt; color: #334155; margin: 3px 0;">
+    Conducted an in-depth PMBOK failure analysis of Apple's cancelled AirPower mat. Evaluated scope creep, thermal engineering limits, stage-gate breakdowns, risk registers, value engineering, go/no-go thresholds, and sustainability impacts.
+  </p>
+  <div class="resume-bullet-box">
+    <div class="resume-bullet-label">Ready-to-Use Resume Bullet</div>
+    Applied PMBOK scope, cost, risk, change-control, feasibility, and sustainability concepts to analyse Apple’s AirPower product-development failure.
+  </div>
+</div>
+
+<div class="project-card">
+  <div class="project-header">
+    <h3 class="project-title"><span class="p-num">8.2</span> ABS Homes Commercial Project Management Plan</h3>
+    <span class="badge badge-completed">Completed</span>
+  </div>
+  <div class="evidence-bar"><strong>Evidence:</strong> <span>Group 73 Project Plan</span></div>
+  <p style="font-size: 8.2pt; color: #334155; margin: 3px 0;">
+    Served as <strong>Project Manager</strong> for Group 73. Authored Project Charter, Work Breakdown Structure (WBS), milestone schedules, Stakeholder Register, Power-Interest Grid, comprehensive Risk Register with qualitative scoring, communications matrix, escalation pathways, and document governance.
+  </p>
+</div>
+
+<!-- ========================================== -->
+<!-- PAGE 12: SECTIONS 9, 10, 11 & 12           -->
+<!-- ========================================== -->
+<div class="page-break"></div>
+<h2 class="section-heading"><span class="section-num">9.</span> Ethics, Responsible AI, and Policy Work</h2>
+
+<div class="project-card">
+  <div class="project-header">
+    <h3 class="project-title">Responsible AI, Algorithmic Fairness & Ethical Policy Portfolio</h3>
+    <span class="badge badge-completed">Completed Academic Submissions</span>
+  </div>
+  <ul class="project-bullets">
+    <li><strong>AI vs. Performers & Likeness Rights:</strong> Poster on synthetic media in entertainment: voice/likeness rights, digital scanning, performer displacement, posthumous consent, SAG-AFTRA protections. <span>Evidence: Poster Cons3.pdf</span></li>
+    <li><strong>AI Creativity & Meme Ethics Case Study:</strong> Evaluated generative AI creativity via Deontological, Utilitarian, and Virtue Ethics. Analyzed copyright infringement in training corpora, artist consent, compensation models, C2PA cryptographic watermarking, and AI labeling. <span>Evidence: Cadmus Final Submission</span></li>
+    <li><strong>Whistleblower Governance Report:</strong> Addressed unlabelled AI content, lack of training consent, unfair competition, independent auditing committees, and phased compliance governance.</li>
+    <li><strong>Algorithmic Justice in Public Welfare:</strong> Analyzed automated welfare systems (Robodebt context): human-in-the-loop oversight, disparate impact, algorithmic impact assessments, appeal rights, distributive justice.</li>
+    <li><strong>Cognitive & Implicit Bias Mitigation:</strong> Structured practices separating empirical observation from subconscious assumption, incorporating counter-stereotyping and empathetic communication.</li>
+  </ul>
+</div>
+
+<h2 class="section-heading"><span class="section-num">10.</span> Android and Quantum-Computing Work</h2>
+
+<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
+  <div class="project-card" style="margin-bottom: 0;">
+    <div class="project-header">
+      <h3 class="project-title" style="font-size: 9.2pt;"><span class="p-num">10.1</span> Native Android Engineering</h3>
+      <span class="badge badge-completed">Completed</span>
+    </div>
+    <div class="evidence-bar" style="font-size: 7.2pt;"><strong>Evidence:</strong> <span>SDC Report</span></div>
+    <p style="font-size: 7.8pt; color: #334155; margin: 2px 0;">
+      Built Android apps using Java, XML, and Android Studio: Linear, Relative, Frame, and Table layouts, custom widgets, menus, dialogs, toasts, and local SQLite CRUD queries.
+    </p>
+  </div>
+  <div class="project-card" style="margin-bottom: 0;">
+    <div class="project-header">
+      <h3 class="project-title" style="font-size: 9.2pt;"><span class="p-num">10.2</span> Qiskit Quantum Simulation</h3>
+      <span class="badge badge-completed">Completed</span>
+    </div>
+    <div class="evidence-bar" style="font-size: 7.2pt;"><strong>Evidence:</strong> <span>Quantum Report</span></div>
+    <p style="font-size: 7.8pt; color: #334155; margin: 2px 0;">
+      Simulated quantum circuits in IBM Qiskit: superposition, entanglement, Hadamard ($H$), Pauli-$X/Y/Z$, and CNOT gates. Computed statevectors and Bloch transformations.
+    </p>
+  </div>
+</div>
+
+<h2 class="section-heading"><span class="section-num">11.</span> Design-Thinking and Other Formal Prototypes</h2>
+
+<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
+  <div class="project-card" style="margin-bottom: 0;">
+    <div class="project-header">
+      <h3 class="project-title" style="font-size: 9.2pt;"><span class="p-num">11.1</span> Mobile Addiction DT Prototype</h3>
+      <span class="badge badge-completed">Completed</span>
+    </div>
+    <div class="evidence-bar" style="font-size: 7.2pt;"><strong>Evidence:</strong> <span>DT Final Prototype</span></div>
+    <p style="font-size: 7.8pt; color: #334155; margin: 2px 0;">
+      Executed full Design Thinking cycle: screen-time monitoring dashboard, behavioral habit nudges, and remote counseling support integrations.
+    </p>
+  </div>
+  <div class="project-card" style="margin-bottom: 0;">
+    <div class="project-header">
+      <h3 class="project-title" style="font-size: 9.2pt;"><span class="p-num">11.2</span> Computer Vision Literature Review</h3>
+      <span class="badge badge-completed">Completed</span>
+    </div>
+    <div class="evidence-bar" style="font-size: 7.2pt;"><strong>Evidence:</strong> <span>Literature Review</span></div>
+    <p style="font-size: 7.8pt; color: #334155; margin: 2px 0;">
+      Co-authored survey synthesizing OpenCV preprocessing, edge/contour detection, Otsu thresholding, PSO feature selection, and robot visual navigation.
+    </p>
+  </div>
+</div>
+
+<h2 class="section-heading"><span class="section-num">12.</span> Unfinished, Partial, and Chat-Only Projects (Honest Audit)</h2>
+
+<table class="content-table" style="font-size: 7.6pt;">
+  <tr>
+    <th style="width: 25%;">Initiative</th>
+    <th style="width: 18%;">Current State</th>
+    <th>Truthful Audit Summary</th>
+  </tr>
+  <tr>
+    <td><strong>CosyVoice 2 Local Voice Cloning</strong></td>
+    <td><span class="badge badge-prototype">Code Verified</span></td>
+    <td>Python 3.11, Apple MPS, 24 kHz synthesis, prompt conditioning, and API endpoints configured. Real reference audio, downloaded weights, and end-to-end WAV generation not fully verified. Hindi/Telugu experimental.</td>
+  </tr>
+  <tr>
+    <td><strong>LJSpeech Text-to-Speech</strong></td>
+    <td><span class="badge badge-progress">Pipeline Complete</span></td>
+    <td>Data cleaning, silence trimming, and 13,100 sample text normalization completed. Acoustic model training and vocoder inference were not executed. Frame as data pipeline engineering.</td>
+  </tr>
+  <tr>
+    <td><strong>Data Taming Assignment 3</strong></td>
+    <td><span class="badge badge-progress">Script Ready</span></td>
+    <td>Tidymodels recipe, feature engineering, and cross-validation grids prepared in code. Final test split metrics and rendered document were unfinished.</td>
+  </tr>
+  <tr>
+    <td><strong>SiamFC Visual Tracking</strong></td>
+    <td><span class="badge badge-prototype">Partial Sandbox</span></td>
+    <td>Implemented frame-by-frame visual tracking, bounding box IoU computation, and occlusion recovery logic. Quantitative benchmarking on standard ground-truth tracking datasets remained incomplete.</td>
+  </tr>
+  <tr>
+    <td><strong>Robotics Middleware Sandboxes</strong></td>
+    <td><span class="badge badge-prototype">Modular Scripts</span></td>
+    <td>ROS velocity nodes, RealSense depth alignment, Dynamixel serial drivers, Jetson inference, and ESP32-CAM video were executed as separate modular prototypes rather than an integrated commercial robot.</td>
+  </tr>
+  <tr>
+    <td><strong>English-Proficiency App</strong></td>
+    <td><span class="badge badge-prototype">UI Prototype</span></td>
+    <td>React interface and Web Speech API navigation demonstrated. Full curriculum, backend persistence, and production hosting were not completed.</td>
+  </tr>
+</table>
+
+<div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 4px; font-size: 7.2pt; color: #475569; margin-top: 4px;">
+  <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 4px; padding: 3px 6px;"><strong>Meme Detection:</strong> OCR + Multimodal VLM humor scoring.</div>
+  <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 4px; padding: 3px 6px;"><strong>Messaging Assistant:</strong> LLM automation with supervisor review.</div>
+  <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 4px; padding: 3px 6px;"><strong>PDF Expense Analyser:</strong> Bank-statement categorisation.</div>
+  <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 4px; padding: 3px 6px;"><strong>NotchBox:</strong> macOS notch productivity tools.</div>
+  <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 4px; padding: 3px 6px;"><strong>Living-Assistant UI:</strong> Animated desktop companion.</div>
+  <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 4px; padding: 3px 6px;"><strong>College ERP:</strong> Student grading portal wireframes.</div>
+  <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 4px; padding: 3px 6px;"><strong>Smart-Home IoT:</strong> Sensor telemetry hub architecture.</div>
+  <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 4px; padding: 3px 6px;"><strong>Robot Personality AI:</strong> FSMs for social robotics.</div>
+  <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 4px; padding: 3px 6px;"><strong>OpenPodcar:</strong> Autonomous electric campus mobility.</div>
+  <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 4px; padding: 3px 6px;"><strong>Travel Helpline App:</strong> Mobile emergency assistance UX.</div>
+  <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 4px; padding: 3px 6px;"><strong>Unity 2D Game:</strong> Multiplayer mechanics exploration.</div>
+  <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 4px; padding: 3px 6px;"><strong>Anganwadi Rural AI:</strong> Child nutrition monitoring concept.</div>
+</div>
+
+<!-- ========================================== -->
+<!-- PAGE 13: SECTION 13 (Technical Skills)     -->
+<!-- ========================================== -->
+<div class="page-break"></div>
+<h2 class="section-heading"><span class="section-num">13.</span> Demonstrated Knowledge and Technical Skills Matrix</h2>
+
+<div class="skills-grid">
+  <!-- Languages -->
+  <div class="skill-category-card">
+    <div class="skill-cat-header">💻 Programming & Query Languages</div>
+    <div class="tag-cloud">
+      <span class="skill-tag accent">Python</span>
+      <span class="skill-tag accent">R</span>
+      <span class="skill-tag accent">JavaScript (ES6+)</span>
+      <span class="skill-tag accent">TypeScript</span>
+      <span class="skill-tag">Java</span>
+      <span class="skill-tag">Solidity</span>
+      <span class="skill-tag">C / C++ (Arduino)</span>
+      <span class="skill-tag">SQL</span>
+      <span class="skill-tag">SQLite</span>
+      <span class="skill-tag">HTML5 / CSS3</span>
+      <span class="skill-tag">XML</span>
+    </div>
+  </div>
+
+  <!-- Machine Learning -->
+  <div class="skill-category-card">
+    <div class="skill-cat-header">🧠 Classical Machine Learning</div>
+    <div class="tag-cloud">
+      <span class="skill-tag accent">LightGBM</span>
+      <span class="skill-tag accent">Gradient Boosting</span>
+      <span class="skill-tag">Huber Regression</span>
+      <span class="skill-tag">Linear / Logistic Regression</span>
+      <span class="skill-tag">PCA</span>
+      <span class="skill-tag">K-Means</span>
+      <span class="skill-tag">Feature Engineering</span>
+      <span class="skill-tag">Stratified K-Fold CV</span>
+      <span class="skill-tag">Leakage Prevention</span>
+      <span class="skill-tag">ROC-AUC / PR-AUC</span>
+      <span class="skill-tag">F1 / Macro-F1</span>
+      <span class="skill-tag">MAE / RMSE</span>
+    </div>
+  </div>
+
+  <!-- Deep Learning -->
+  <div class="skill-category-card">
+    <div class="skill-cat-header">⚡ Deep Learning & Neural Architectures</div>
+    <div class="tag-cloud">
+      <span class="skill-tag accent">PyTorch</span>
+      <span class="skill-tag accent">TensorFlow</span>
+      <span class="skill-tag accent">TensorFlow Lite</span>
+      <span class="skill-tag">DeepLabV3+</span>
+      <span class="skill-tag">YOLOv8</span>
+      <span class="skill-tag">ResNet</span>
+      <span class="skill-tag">VGG16</span>
+      <span class="skill-tag">Vision Transformers (ViT)</span>
+      <span class="skill-tag">CNNs & MLPs</span>
+      <span class="skill-tag">LSTM / GRU / RNNs</span>
+      <span class="skill-tag">VAEs</span>
+      <span class="skill-tag">GANs / DCGAN</span>
+      <span class="skill-tag">Transfer Learning</span>
+      <span class="skill-tag">MPS & CUDA</span>
+    </div>
+  </div>
+
+  <!-- RL & LLMs -->
+  <div class="skill-category-card">
+    <div class="skill-cat-header">🤖 Reinforcement Learning & LLMs</div>
+    <div class="tag-cloud">
+      <span class="skill-tag accent">PPO (Proximal Policy Opt)</span>
+      <span class="skill-tag accent">DPO (Direct Preference Opt)</span>
+      <span class="skill-tag">Supervised Fine-Tuning (SFT)</span>
+      <span class="skill-tag">Reward Modeling</span>
+      <span class="skill-tag">Generalized Advantage (GAE)</span>
+      <span class="skill-tag">KL-Divergence Penalties</span>
+      <span class="skill-tag">Reward Hacking Analysis</span>
+      <span class="skill-tag">Perplexity Evaluation</span>
+      <span class="skill-tag">RAG Architecture</span>
+      <span class="skill-tag">Prompt Engineering</span>
+    </div>
+  </div>
+
+  <!-- Computer Vision -->
+  <div class="skill-category-card">
+    <div class="skill-cat-header">👁️ Computer Vision</div>
+    <div class="tag-cloud">
+      <span class="skill-tag accent">OpenCV</span>
+      <span class="skill-tag accent">RGB-D Processing</span>
+      <span class="skill-tag accent">NAFNet Deblurring</span>
+      <span class="skill-tag">Richardson-Lucy</span>
+      <span class="skill-tag">Semantic Segmentation</span>
+      <span class="skill-tag">Object Detection & Tracking</span>
+      <span class="skill-tag">Depth Inpainting</span>
+      <span class="skill-tag">CLAHE</span>
+      <span class="skill-tag">HOG Features</span>
+      <span class="skill-tag">Canny Edge</span>
+      <span class="skill-tag">3D Geometry & Convex Hulls</span>
+      <span class="skill-tag">Vegetation Indices</span>
+      <span class="skill-tag">CLIP Multimodal Retrieval</span>
+    </div>
+  </div>
+
+  <!-- Speech & Audio -->
+  <div class="skill-category-card">
+    <div class="skill-cat-header">🎙️ Speech & Audio Processing</div>
+    <div class="tag-cloud">
+      <span class="skill-tag accent">wav2vec2</span>
+      <span class="skill-tag accent">SpeechT5 & HiFi-GAN</span>
+      <span class="skill-tag">Accent Adapters</span>
+      <span class="skill-tag">Contrastive InfoNCE</span>
+      <span class="skill-tag">MFCC Extraction</span>
+      <span class="skill-tag">Pitch / F0 Analysis</span>
+      <span class="skill-tag">RMS Energy & Spectral Feats</span>
+      <span class="skill-tag">Audio Augmentation</span>
+      <span class="skill-tag">Speech Recognition (ASR)</span>
+      <span class="skill-tag">Text-to-Speech (TTS)</span>
+      <span class="skill-tag">TFLite Audio Models</span>
+    </div>
+  </div>
+
+  <!-- Web & Software -->
+  <div class="skill-category-card">
+    <div class="skill-cat-header">🌐 Web & Full-Stack Development</div>
+    <div class="tag-cloud">
+      <span class="skill-tag accent">React</span>
+      <span class="skill-tag accent">Next.js / Vinext</span>
+      <span class="skill-tag accent">Vite</span>
+      <span class="skill-tag">Node.js</span>
+      <span class="skill-tag">Express</span>
+      <span class="skill-tag">REST APIs</span>
+      <span class="skill-tag">IndexedDB / Dexie</span>
+      <span class="skill-tag">Service Workers</span>
+      <span class="skill-tag">Web Audio API</span>
+      <span class="skill-tag">Web Speech API</span>
+      <span class="skill-tag">yt-dlp & FFmpeg</span>
+      <span class="skill-tag">Google Drive API</span>
+    </div>
+  </div>
+
+  <!-- Web3 & Blockchain -->
+  <div class="skill-category-card">
+    <div class="skill-cat-header">⛓️ Web3 & Blockchain</div>
+    <div class="tag-cloud">
+      <span class="skill-tag accent">Solidity Smart Contracts</span>
+      <span class="skill-tag accent">Hardhat</span>
+      <span class="skill-tag">Ethereum Sepolia Testnet</span>
+      <span class="skill-tag">MetaMask Integration</span>
+      <span class="skill-tag">ERC-721 Standards</span>
+      <span class="skill-tag">NFT Minting & Escrow</span>
+      <span class="skill-tag">Decentralized Storage (IPFS)</span>
+      <span class="skill-tag">Multimodal Asset Search</span>
+    </div>
+  </div>
+
+  <!-- Robotics & Embedded -->
+  <div class="skill-category-card">
+    <div class="skill-cat-header">🤖 Robotics & Embedded Systems</div>
+    <div class="tag-cloud">
+      <span class="skill-tag accent">Raspberry Pi (Zero W / 4)</span>
+      <span class="skill-tag accent">Arduino (Uno / Nano)</span>
+      <span class="skill-tag accent">PID Control Systems</span>
+      <span class="skill-tag">ESP32-CAM</span>
+      <span class="skill-tag">NVIDIA Jetson Xavier NX</span>
+      <span class="skill-tag">ROS & rospy</span>
+      <span class="skill-tag">TurtleBot3</span>
+      <span class="skill-tag">Intel RealSense D435</span>
+      <span class="skill-tag">Dynamixel Servos</span>
+      <span class="skill-tag">MPU6050 IMU</span>
+      <span class="skill-tag">FastAPI Robot Endpoints</span>
+    </div>
+  </div>
+
+  <!-- Cybersecurity -->
+  <div class="skill-category-card">
+    <div class="skill-cat-header">🛡️ Cybersecurity & SOC Operations</div>
+    <div class="tag-cloud">
+      <span class="skill-tag accent">Splunk SIEM</span>
+      <span class="skill-tag accent">Sysmon Threat Hunting</span>
+      <span class="skill-tag accent">Wazuh & OSSEC HIDS</span>
+      <span class="skill-tag">File Integrity Monitoring (FIM)</span>
+      <span class="skill-tag">MITRE ATT&CK Mapping</span>
+      <span class="skill-tag">Log4Shell (CVE-2021-44228)</span>
+      <span class="skill-tag">Nmap & SNMP Enumeration</span>
+      <span class="skill-tag">Risk Assessment Matrices</span>
+      <span class="skill-tag">ACSC Essential Eight</span>
+      <span class="skill-tag">NIST CSF & ISO 27001</span>
+      <span class="skill-tag">Australian Privacy Principles</span>
+    </div>
+  </div>
+
+  <!-- Data Science & Stats -->
+  <div class="skill-category-card">
+    <div class="skill-cat-header">📈 Data Science, Statistics & Research</div>
+    <div class="tag-cloud">
+      <span class="skill-tag accent">R Tidyverse</span>
+      <span class="skill-tag accent">Quarto</span>
+      <span class="skill-tag">Log-Linear Regression</span>
+      <span class="skill-tag">Prediction Intervals</span>
+      <span class="skill-tag">Wilcoxon Rank-Sum Tests</span>
+      <span class="skill-tag">Systematic Literature Synthesis</span>
+      <span class="skill-tag">Academic Paper Writing</span>
+      <span class="skill-tag">Patent Draft Specification</span>
+    </div>
+  </div>
+
+  <!-- Software Engineering -->
+  <div class="skill-category-card">
+    <div class="skill-cat-header">⚙️ Software Engineering Tools & Practices</div>
+    <div class="tag-cloud">
+      <span class="skill-tag accent">Git & GitHub</span>
+      <span class="skill-tag">Atomic Commits</span>
+      <span class="skill-tag">Test-Driven Development (TDD)</span>
+      <span class="skill-tag">Jupyter Lab / Notebooks</span>
+      <span class="skill-tag">LaTeX Formatting</span>
+      <span class="skill-tag">Reproducible Random Seeding</span>
+      <span class="skill-tag">Model Checkpoint Rotation</span>
+      <span class="skill-tag">Kaggle GPU Workflows</span>
+    </div>
+  </div>
+
+  <!-- Project Management & UI/UX -->
+  <div class="skill-category-card">
+    <div class="skill-cat-header">📋 Project Management & UI/UX Design</div>
+    <div class="tag-cloud">
+      <span class="skill-tag accent">Figma Prototyping</span>
+      <span class="skill-tag accent">User-Centred Design (UCD)</span>
+      <span class="skill-tag">PMBOK Scope & Cost Control</span>
+      <span class="skill-tag">Work Breakdown Structures (WBS)</span>
+      <span class="skill-tag">Risk Registers & Matrices</span>
+      <span class="skill-tag">Power-Interest Grids</span>
+      <span class="skill-tag">Design Thinking</span>
+      <span class="skill-tag">WCAG Accessibility</span>
+      <span class="skill-tag">Usability Testing</span>
+    </div>
+  </div>
+
+  <!-- Responsible AI -->
+  <div class="skill-category-card">
+    <div class="skill-cat-header">⚖️ Responsible AI & Ethical Governance</div>
+    <div class="tag-cloud">
+      <span class="skill-tag accent">Algorithmic Fairness</span>
+      <span class="skill-tag accent">NIST AI Risk Management</span>
+      <span class="skill-tag">EU AI Act Standards</span>
+      <span class="skill-tag">Disparate Impact Auditing</span>
+      <span class="skill-tag">Copyright & IP Provenance</span>
+      <span class="skill-tag">C2PA Watermarking</span>
+      <span class="skill-tag">Human-in-the-Loop Oversight</span>
+      <span class="skill-tag">Deontological & Utilitarian Ethics</span>
+    </div>
+  </div>
+</div>
+
+<!-- ========================================== -->
+<!-- PAGE 14: SECTION 14 (Experience)           -->
+<!-- ========================================== -->
+<div class="page-break"></div>
+<h2 class="section-heading"><span class="section-num">14.</span> Work Experience, Internships, and Leadership Evidence</h2>
+
+<div class="project-card">
+  <div class="project-header">
+    <h3 class="project-title">Web Synergies — UI/UX Intern</h3>
+    <span class="badge badge-completed">Verified Internship</span>
+  </div>
+  <div class="evidence-bar">
+    <strong>Tenure:</strong> September 2023 – November 2023 (Hyderabad / Remote) | 
+    <strong>Evidence:</strong> <span>Official Experience Letter</span>
+  </div>
+  <p style="font-size: 8.2pt; color: #334155; margin: 3px 0;">
+    Contributed directly to corporate UI/UX client deliverables. Collaborated with senior product designers and front-end engineering teams. Formulated user research protocols, journey maps, and high-fidelity Figma prototypes. Conducted usability testing and implemented WCAG 2.1 accessibility standards across web platforms.
+  </p>
+</div>
+
+<div class="project-card">
+  <div class="project-header">
+    <h3 class="project-title">Vistan Nextgen — Data Science/AI/ML and Robotics Product-Pitch Intern</h3>
+    <span class="badge badge-completed">Verified Internship</span>
+  </div>
+  <div class="evidence-bar"><strong>Tenure:</strong> July 2024 – September 2024 (Hyderabad)</div>
+  <p style="font-size: 8.2pt; color: #334155; margin: 3px 0;">
+    Contributed to applied Data Science and AI/ML initiatives while spearheading technical demonstrations and product pitches for commercial robotics systems. Delivered live technical presentations to prospective clients and synthesized audience feedback into actionable engineering requirements. <em>(Honest boundary: Frame as technical demonstration and AI/ML contributor; do not claim proprietary ownership of Vistan commercial robots).</em>
+  </p>
+</div>
+
+<div class="project-card">
+  <div class="project-header">
+    <h3 class="project-title">Infidata Technologies — Web Application Development Intern</h3>
+    <span class="badge badge-completed">Technical Training</span>
+  </div>
+  <p style="font-size: 8.2pt; color: #334155; margin: 3px 0;">
+    Completed intensive web application development training and project work covering HTML5, CSS3, JavaScript, AngularJS, Bootstrap, PHP, MySQL, jQuery, WAMP/XAMPP environments, full SDLC, and browser compatibility testing. <em>(Note: Verify completion certificates match personal records before formal resume inclusion).</em>
+  </p>
+</div>
+
+<div class="project-card">
+  <div class="project-header">
+    <h3 class="project-title">Reliance Digital — Consumer Electronics Sales Associate</h3>
+    <span class="badge badge-completed">Commercial Experience</span>
+  </div>
+  <div class="evidence-bar"><strong>Location:</strong> Bengaluru, India</div>
+  <p style="font-size: 8.2pt; color: #334155; margin: 3px 0;">
+    Delivered front-line customer engagement, technical advisory, and commercial sales across premium consumer electronics (smartphones, computing hardware, audio engineering systems, and smart-home IoT devices). Explained warranty terms, hardware specifications, and post-sales technical support.
+  </p>
+</div>
+
+<div class="project-card">
+  <div class="project-header">
+    <h3 class="project-title">University Leadership, Community Volunteering & Creative Portfolios</h3>
+    <span class="badge badge-completed">Community Engagement</span>
+  </div>
+  <ul class="project-bullets">
+    <li><strong>AUSA / YouX Crew Volunteer:</strong> University of Adelaide student community volunteer. Managed logistics, uniform-replacement pop-ups, and student campus engagement programs.</li>
+    <li><strong>FORCE Club Event Photographer:</strong> Lead photographer documenting large-scale university events, workshops, and student festivals in dynamic, fast-paced environments.</li>
+    <li><strong>Online Creative Portfolio:</strong> Published professional UI/UX and product design cases on <a href="https://www.behance.net/gallery/184968613/my-UIUX-portfolio">Behance Portfolio Profile</a>.</li>
+  </ul>
+</div>
+
+<!-- ========================================== -->
+<!-- PAGE 15: SECTION 15 (Strategic Guardrails) -->
+<!-- ========================================== -->
+<div class="page-break"></div>
+<h2 class="section-heading"><span class="section-num">15.</span> Best Resume Positioning and Strategic Guardrails</h2>
+
+<h3 class="sub-heading" style="margin-top: 6px;">15.1 Five Core Career Positioning Profiles</h3>
+<div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 6px; margin-bottom: 8px; font-size: 8pt;">
+  <div style="background: #eff6ff; border: 1px solid #bfdbfe; border-radius: 5px; padding: 6px 10px;">
+    <strong style="color: #1e40af; display: block; font-size: 8.5pt; margin-bottom: 2px;">1. Applied AI/ML Researcher</strong>
+    Lettuce Biomass Estimation, Accent-Adaptive Speech, RLHF (PPO vs DPO), VAEs, Clinical Diabetes Screening, Blood-Cell Classification.
+  </div>
+  <div style="background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 5px; padding: 6px 10px;">
+    <strong style="color: #166534; display: block; font-size: 8.5pt; margin-bottom: 2px;">2. Computer Vision & Multimodal Engineer</strong>
+    Image Deblurring & YOLOv8, RGB-D Segmentation, CLIP Zero-Shot & Adapters, Blood-Cell ResNet, FER2013, Motion Tracking.
+  </div>
+  <div style="background: #fdf4ff; border: 1px solid #f0abfc; border-radius: 5px; padding: 6px 10px;">
+    <strong style="color: #86198f; display: block; font-size: 8.5pt; margin-bottom: 2px;">3. Robotics & Embedded-AI Systems Developer</strong>
+    Roolie Two-Wheeled Robot, ROS / FastAPI Endpoints, Intel RealSense RGB-D, Dynamixel Actuation, Raspberry Pi & ESP32-CAM.
+  </div>
+  <div style="background: #fffbeb; border: 1px solid #fde68a; border-radius: 5px; padding: 6px 10px;">
+    <strong style="color: #92400e; display: block; font-size: 8.5pt; margin-bottom: 2px;">4. Full-Stack & Web3 Product Developer</strong>
+    Sisic Music Audio Engine, Blockchain NFT Marketplace, Multilingual Recipe-Zine App, SimplProcure Venture Architecture.
+  </div>
+  <div style="background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 5px; padding: 6px 10px; grid-column: span 2;">
+    <strong style="color: #334155; display: block; font-size: 8.5pt; margin-bottom: 2px;">5. Cybersecurity & Responsible AI Analyst</strong>
+    Log4Shell Technical Post-Mortem, AgeWell Healthcare Risk Assessment, Wazuh/Splunk SIEM Labs, Algorithmic Fairness & NIST Governance.
+  </div>
+</div>
+
+<h3 class="sub-heading" style="margin-top: 6px;">15.2 Recommended Project Selection for a 1-Page Technical Resume</h3>
+<div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 5px; padding: 8px 12px; margin-bottom: 8px;">
+  <ol style="margin: 0; padding-left: 16px; font-size: 8pt; color: #1e293b; line-height: 1.35;">
+    <li style="margin-bottom: 2px;"><strong>RGB-D Lettuce Biomass Estimation:</strong> DeepLabV3+ ResNet34, depth restoration, 3D geometry, ensemble regression (IoU: 0.982).</li>
+    <li style="margin-bottom: 2px;"><strong>Accent-Adaptive Speech Pipeline:</strong> wav2vec2 self-supervised fine-tuning, accent adapter, SpeechT5 HiFi-GAN synthesis.</li>
+    <li style="margin-bottom: 2px;"><strong>RLHF Alignment Comparison (PPO vs DPO):</strong> Full 3-stage pipeline, reward modeling, KL penalties, reward hacking analysis.</li>
+    <li style="margin-bottom: 2px;"><strong>Image Deblurring & YOLOv8 Detection:</strong> NAFNet vs Richardson-Lucy restoration (+3.86 dB PSNR), degraded mAP evaluation.</li>
+    <li style="margin-bottom: 2px;"><strong>Decentralized NFT Marketplace & AI Search:</strong> Solidity, Hardhat, Sepolia, React, IPFS, multimodal visual & NLP search.</li>
+    <li style="margin-bottom: 2px;"><strong>Roolie Self-Balancing Social Robot:</strong> PID closed-loop balancing, Raspberry Pi Zero W, ESP32-CAM, OpenCV tracking.</li>
+    <li style="margin-bottom: 2px;"><strong>SA Water Sensor-Placement Optimization Capstone:</strong> Graph network formulation, multi-objective optimization, 50+ paper synthesis.</li>
+    <li style="margin-bottom: 2px;"><strong>Sisic Music Platform:</strong> React turntable audio engine, tonearm physics, Dexie DB, Google Drive, yt-dlp/FFmpeg pipeline.</li>
+  </ol>
+</div>
+
+<!-- Strict Guardrails Alert -->
+<div class="guardrail-alert" style="margin-bottom: 8px; padding: 8px 10px;">
+  <div class="guardrail-alert-title" style="font-size: 8.5pt;">
+    ⚠️ Mandatory Resume & Interview Integrity Guardrails ("What NOT to Claim")
+  </div>
+  <table class="guardrail-table" style="font-size: 7.5pt;">
+    <tr>
+      <th style="width: 50%;">Do NOT Claim (Overstatement Risk)</th>
+      <th style="width: 50%;">Accurate & Defensible Framing</th>
+    </tr>
+    <tr>
+      <td class="dont">❌ Physical field installation or operational utility deployment for SA Water</td>
+      <td class="do">✅ Literature-led research, sensor modality analysis, and mathematical placement framework</td>
+    </tr>
+    <tr>
+      <td class="dont">❌ Clinical or hospital deployment for Diabetes MLP or FER2013</td>
+      <td class="do">✅ Coursework research models evaluated on benchmark datasets with fairness critique</td>
+    </tr>
+    <tr>
+      <td class="dont">❌ A granted commercial patent for the NFT search engine</td>
+      <td class="do">✅ Academic research paper and formal patent-style draft specification</td>
+    </tr>
+    <tr>
+      <td class="dont">❌ Formal large-scale human listening study for Accent-Adaptive Speech</td>
+      <td class="do">✅ Qualitative listening evaluation alongside silhouette score and NMI metrics</td>
+    </tr>
+    <tr>
+      <td class="dont">❌ Completed LJSpeech TTS model or validated generation for CosyVoice 2</td>
+      <td class="do">✅ Audio preprocessing pipeline (LJSpeech) and experimental static implementation (CosyVoice 2)</td>
+    </tr>
+    <tr>
+      <td class="dont">❌ Deployed production transit hub installation for SMARTGUARD</td>
+      <td class="do">✅ Co-designed architectural surveillance concept and engineering specification</td>
+    </tr>
+    <tr>
+      <td class="dont">❌ Proprietary ownership of commercial robots at Vistan Nextgen</td>
+      <td class="do">✅ Data Science/AI/ML contributor and technical product-pitch / demonstration intern</td>
+    </tr>
+    <tr>
+      <td class="dont">❌ External research papers authored by other student teams</td>
+      <td class="do">✅ Only work where personal co-authorship and engineering contributions exist</td>
+    </tr>
+    <tr>
+      <td class="dont">❌ Private family personal, property, or medical records as engineering deliverables</td>
+      <td class="do">✅ Keep strictly focused on professional engineering, software, and academic assets</td>
+    </tr>
+  </table>
+</div>
+
+<!-- Archival Source Notes -->
+<div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 5px; padding: 6px 10px; font-size: 7.2pt; color: #64748b;">
+  <strong style="color: #334155;">Archival Evidence & Export Backups:</strong>
+  Verified against primary repositories and chat archive logs:
+  <span class="code-font">ChatGPT Data Export-1-500.pdf, 501-1000.pdf, 1001-1500.pdf, 1501-1932.pdf, Export1.pdf, Export3.pdf, Export4.pdf, Export5-1-500.pdf, 501-1000.pdf, 1001-1500.pdf, 1501-2000.pdf, 2001-2683.pdf</span>.
+</div>
+
+</body>
+</html>

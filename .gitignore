@@ -1,0 +1,8 @@
+_local-originals/
+bugs.md
+*.aux
+*.log
+*.out
+*.toc
+.DS_Store
+.env*
