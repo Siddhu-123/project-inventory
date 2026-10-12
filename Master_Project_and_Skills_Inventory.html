@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Master Project and Skills Inventory — Satya Siddhartha Balanagu</title>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
@@ -543,6 +544,44 @@
   .code-font {
     font-family: 'JetBrains Mono', Consolas, monospace;
     font-size: 7.5pt;
+  }
+
+  @media screen and (max-width: 700px) {
+    body {
+      padding: 0 14px;
+      font-size: 10.5pt;
+    }
+
+    .stats-grid,
+    .taxonomy-grid,
+    .toc-grid,
+    .skills-grid,
+    div[style*="grid-template-columns: repeat(3, 1fr)"],
+    div[style*="grid-template-columns: repeat(2, 1fr)"],
+    div[style*="grid-template-columns: 1fr 1fr"] {
+      grid-template-columns: 1fr !important;
+    }
+
+    .cover-meta,
+    .coursework-card-header,
+    .project-header,
+    .guardrail-alert-title,
+    h2.section-heading,
+    .tag-cloud {
+      flex-wrap: wrap;
+    }
+
+    .badge,
+    .metrics-box-icon {
+      white-space: normal;
+    }
+
+    table.content-table,
+    .guardrail-table {
+      display: block;
+      overflow-x: auto;
+      width: 100%;
+    }
   }
 </style>
 </head>
